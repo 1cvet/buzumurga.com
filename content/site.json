@@ -1,0 +1,13 @@
+{
+    "SHOW_KYPITO": false,
+    "domain": "https://buzumurga.com",
+    "email": "buzumurga.m@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/m-buzumurga/",
+    "metrikaId": 80111218,
+    "cv": "/Buzumurga_Mikhail.pdf",
+    "contactEndpoint": "/api/contact",
+    "languages": [
+        { "code": "en", "path": "/", "label": "EN", "locale": "en_US" },
+        { "code": "ru", "path": "/ru/", "label": "RU", "locale": "ru_RU" }
+    ]
+}
