@@ -1,7 +1,7 @@
 # buzumurga.com
 
 Personal website of Mikhail Buzumurga: <https://buzumurga.com/> (EN) and <https://buzumurga.com/ru/> (RU).
-Static pages built from one template and two content files, plus a tiny contact-form service.
+Static pages built from one template and two content files.
 
 ## Structure
 
@@ -17,7 +17,6 @@ Static pages built from one template and two content files, plus a tiny contact-
 | `scripts/serve.mjs` | Local preview with production-like headers |
 | `scripts/og.mjs` | Regenerates `static/og-en.jpg` and `static/og-ru.jpg` (needs Playwright) |
 | `cv/Buzumurga_Mikhail.docx` | CV source (not published); export to `static/Buzumurga_Mikhail.pdf` |
-| `server/contact/` | Contact endpoint (`POST /api/contact` -> Telegram), systemd unit, env example |
 | `deploy/` | Nginx configs, server audit script, server setup guide (`deploy/SERVER.md`) |
 | `.github/workflows/deploy.yml` | Build and checks on every PR; rsync deploy to the VPS on `master` |
 

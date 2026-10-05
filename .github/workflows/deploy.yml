@@ -4,11 +4,11 @@
 #
 # Repository secrets (Settings -> Secrets and variables -> Actions):
 #   SSH_HOST         server IP or hostname
-#   SSH_USER         deploy (owns only /var/www/buzumurga.com)
+#   SSH_USER         deploy (owns only /var/sites/buzumurga.com)
 #   SSH_KEY          private key of the deploy user (ed25519)
 #   SSH_KNOWN_HOSTS  output of `ssh-keyscan -t ed25519 <host>`
 #   SSH_PORT         optional, default 22
-# On the server the key is locked to /var/www/buzumurga.com with rrsync (see deploy/SERVER.md),
+# On the server the key is locked to /var/sites/buzumurga.com with rrsync (see deploy/SERVER.md),
 # so remote paths below are relative to that directory.
 # Repository variable DEPLOY_ENABLED=true turns the upload on (set it once the server is ready);
 # until then the workflow only builds and checks.
