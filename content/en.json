@@ -37,10 +37,22 @@
         "cta": "Get in touch",
         "photoAlt": "Mikhail Buzumurga",
         "stats": [
-            { "value": "10+", "label": "years in digital & eCommerce" },
-            { "value": "ploom.ae", "label": "D2C store launched on time as business owner" },
-            { "value": "728%", "label": "site traffic growth (Purina SEO & paid search)" },
-            { "value": "21+", "label": "new cities for the Nestle eShop in 6 months" }
+            {
+                "value": "10+",
+                "label": "years in digital & eCommerce"
+            },
+            {
+                "value": "ploom.ae",
+                "label": "D2C store launched on time as business owner"
+            },
+            {
+                "value": "728%",
+                "label": "site traffic growth (Purina SEO & paid search)"
+            },
+            {
+                "value": "21+",
+                "label": "new cities for the Nestle eShop in 6 months"
+            }
         ]
     },
     "about": {
@@ -52,16 +64,59 @@
         ],
         "photoAlt": "Mikhail Buzumurga speaking at an internal event",
         "facts": [
-            { "term": "Based in", "value": "Dubai, United Arab Emirates" },
-            { "term": "Languages", "value": "Russian - native, English - C1" }
+            {
+                "term": "Based in",
+                "value": "Dubai, United Arab Emirates"
+            },
+            {
+                "term": "Languages",
+                "value": "Russian - native, English - C1"
+            }
         ],
         "toolsHeading": "Tools & technologies",
         "tools": [
-            { "name": "eCommerce", "items": ["Adobe Commerce / Magento", "OMS integrations", "WordPress"] },
-            { "name": "Growth", "items": ["CRM", "Paid media", "SEO", "GEO / AI visibility"] },
-            { "name": "Analytics", "items": ["Google Analytics", "Yandex Metrica", "Power BI"] },
-            { "name": "Delivery", "items": ["Jira", "GitLab", "Jenkins"] },
-            { "name": "Code", "items": ["PHP", "HTML/CSS", "SQL", "C#"] }
+            {
+                "name": "eCommerce",
+                "items": [
+                    "Adobe Commerce / Magento",
+                    "OMS integrations",
+                    "WordPress"
+                ]
+            },
+            {
+                "name": "Growth",
+                "items": [
+                    "CRM",
+                    "Paid media",
+                    "SEO",
+                    "GEO / AI visibility"
+                ]
+            },
+            {
+                "name": "Analytics",
+                "items": [
+                    "Google Analytics",
+                    "Yandex Metrica",
+                    "Power BI"
+                ]
+            },
+            {
+                "name": "Delivery",
+                "items": [
+                    "Jira",
+                    "GitLab",
+                    "Jenkins"
+                ]
+            },
+            {
+                "name": "Code",
+                "items": [
+                    "PHP",
+                    "HTML/CSS",
+                    "SQL",
+                    "C#"
+                ]
+            }
         ]
     },
     "experience": {
@@ -123,7 +178,7 @@
                 ]
             },
             {
-                "date": "Nov 2017 - Dec 2018",
+                "date": "Dec 2017 - Dec 2018",
                 "place": "Moscow",
                 "title": "Junior Business Analyst",
                 "company": "Nestle IT",
@@ -178,7 +233,10 @@
                 "Delivered on time together with global agency and engineering partners.",
                 "Now run end to end with a lean two-person team, with loyalty, referral and abandoned-cart recovery built in."
             ],
-            "link": { "href": "https://www.ploom.ae/en", "label": "ploom.ae" }
+            "link": {
+                "href": "https://www.ploom.ae/en",
+                "label": "ploom.ae"
+            }
         },
         "casesHeading": "Corporate projects",
         "cases": [
@@ -186,13 +244,19 @@
                 "title": "Nestle Infant Nutrition eShop",
                 "role": "DTC eShop Manager",
                 "text": "Ran the DTC store end to end: expansion into 21+ cities in 6 months, 10+ UX improvements and CRM promo campaigns with RFM segmentation.",
-                "link": { "href": "https://www.nestlebaby.ru/brands", "label": "nestlebaby.ru" }
+                "link": {
+                    "href": "https://www.nestlebaby.ru/brands",
+                    "label": "nestlebaby.ru"
+                }
             },
             {
                 "title": "PIM implementation",
                 "role": "Project Manager & Business Analyst",
                 "text": "Implementation of a product information management (PIM) system for Nestle - from business requirements to go-live.",
-                "link": { "href": "https://catalog.nestle.ru/", "label": "catalog.nestle.ru" }
+                "link": {
+                    "href": "https://catalog.nestle.ru/",
+                    "label": "catalog.nestle.ru"
+                }
             },
             {
                 "title": "CRM implementation",
@@ -213,7 +277,10 @@
                 "title": "Maggi.ru",
                 "role": "Project Manager & Business Analyst",
                 "text": "Migration of the Maggi.ru site to a new platform and further joint development with the agency.",
-                "link": { "href": "https://www.maggi.ru/", "label": "maggi.ru" }
+                "link": {
+                    "href": "https://www.maggi.ru/",
+                    "label": "maggi.ru"
+                }
             }
         ],
         "sideHeading": "Web development (side projects)",
@@ -221,17 +288,28 @@
             {
                 "title": "Cardinals",
                 "text": "Corporate website for a Dubai-based cross-border legal advisory: practices, team, insights and a consultation request flow. Developed and launched on WordPress.",
-                "link": { "href": "https://cardinals.law/", "label": "cardinals.law" }
+                "link": {
+                    "href": "https://cardinals.law/",
+                    "label": "cardinals.law"
+                }
             },
             {
                 "title": "Christicrazycake",
                 "text": "Website for a custom cake studio in Horgen, Switzerland: flavours, prices, gallery and ordering via WhatsApp. Developed and launched on WordPress.",
-                "link": { "href": "https://christicrazycake.com/", "label": "christicrazycake.com" }
+                "link": {
+                    "href": "https://christicrazycake.com/",
+                    "label": "christicrazycake.com"
+                }
             },
             {
                 "title": "MYIDEM events calendar",
                 "text": "Events calendar for MYIDEM, an online journal about Moscow events, built under tight deadlines as project manager and business analyst. The project is now closed.",
-                "image": { "base": "myidem", "width": 640, "height": 640, "alt": "MYIDEM events calendar: a grid of event posters grouped by date" }
+                "image": {
+                    "base": "myidem",
+                    "width": 640,
+                    "height": 640,
+                    "alt": "MYIDEM events calendar: a grid of event posters grouped by date"
+                }
             }
         ],
         "kypito": {
@@ -243,26 +321,71 @@
         "eyebrow": "Education",
         "heading": "Learning never stops.",
         "items": [
-            { "year": "2023 - 2025", "title": "PhD program, Finance & Economics - coursework completed, thesis not yet defended", "place": "Plekhanov Russian University of Economics, Moscow" },
-            { "year": "2019", "title": "Master's degree, Recycling", "place": "National University of Science and Technology MISIS, Moscow" },
-            { "year": "2017", "title": "Bachelor of Business Informatics", "place": "National University of Science and Technology MISIS, Moscow" }
+            {
+                "year": "2023 - 2025",
+                "title": "PhD program, Finance & Economics - coursework completed, thesis not yet defended",
+                "place": "Plekhanov Russian University of Economics, Moscow"
+            },
+            {
+                "year": "2019",
+                "title": "Master's degree, Recycling",
+                "place": "National University of Science and Technology MISIS, Moscow"
+            },
+            {
+                "year": "2017",
+                "title": "Bachelor of Business Informatics",
+                "place": "National University of Science and Technology MISIS, Moscow"
+            }
         ],
         "certsHeading": "Courses & certificates",
         "certs": [
-            { "title": "Project Management", "meta": "MISIS, 72 hours · 2023", "href": "/docs/certificates/misis-project-management.pdf" },
-            { "title": "Agile methodology", "meta": "MISIS, 72 hours · 2023", "href": "/docs/certificates/misis-agile.pdf" },
-            { "title": "Communication - Digital Media Manager", "meta": "eBusiness Academy · 2021", "href": "/docs/certificates/ebusiness-academy-digital-media-manager.pdf" }
+            {
+                "title": "Project Management",
+                "meta": "MISIS, 72 hours · 2023",
+                "href": "/docs/certificates/misis-project-management.pdf"
+            },
+            {
+                "title": "Agile methodology",
+                "meta": "MISIS, 72 hours · 2023",
+                "href": "/docs/certificates/misis-agile.pdf"
+            },
+            {
+                "title": "Communication - Digital Media Manager",
+                "meta": "eBusiness Academy · 2021",
+                "href": "/docs/certificates/ebusiness-academy-digital-media-manager.pdf"
+            }
         ],
         "sololearn": {
             "label": "7 SoloLearn programming courses (2017)",
             "items": [
-                { "title": "Python 3", "href": "/docs/certificates/sololearn-python-3-tutorial.jpg" },
-                { "title": "SQL", "href": "/docs/certificates/sololearn-sql-fundamentals.jpg" },
-                { "title": "PHP", "href": "/docs/certificates/sololearn-php-tutorial.jpg" },
-                { "title": "C#", "href": "/docs/certificates/sololearn-csharp-tutorial.jpg" },
-                { "title": "JavaScript", "href": "/docs/certificates/sololearn-javascript-tutorial.jpg" },
-                { "title": "HTML", "href": "/docs/certificates/sololearn-html-fundamentals.jpg" },
-                { "title": "CSS", "href": "/docs/certificates/sololearn-css-fundamentals.jpg" }
+                {
+                    "title": "Python 3",
+                    "href": "/docs/certificates/sololearn-python-3-tutorial.jpg"
+                },
+                {
+                    "title": "SQL",
+                    "href": "/docs/certificates/sololearn-sql-fundamentals.jpg"
+                },
+                {
+                    "title": "PHP",
+                    "href": "/docs/certificates/sololearn-php-tutorial.jpg"
+                },
+                {
+                    "title": "C#",
+                    "href": "/docs/certificates/sololearn-csharp-tutorial.jpg"
+                },
+                {
+                    "title": "JavaScript",
+                    "href": "/docs/certificates/sololearn-javascript-tutorial.jpg"
+                },
+                {
+                    "title": "HTML",
+                    "href": "/docs/certificates/sololearn-html-fundamentals.jpg"
+                },
+                {
+                    "title": "CSS",
+                    "href": "/docs/certificates/sololearn-css-fundamentals.jpg"
+                }
             ]
         }
     },
@@ -316,27 +439,15 @@
     "contact": {
         "eyebrow": "Contact",
         "heading": "Say hello.",
-        "lead": "Have a question or a proposal? I'm always ready to discuss.",
+        "lead": "Have a question or a proposal? Write me by email or on Telegram - I'm always ready to discuss.",
         "emailLabel": "Email",
-        "emailHidden": "Enable JavaScript to see the address, or use the form.",
+        "emailHidden": "Enable JavaScript to see the address, or write me on Telegram or LinkedIn.",
         "copy": "Copy",
         "copied": "Copied",
         "write": "Write",
+        "telegramLabel": "Telegram",
         "locationLabel": "Location",
         "location": "Dubai, UAE",
-        "linkedinLabel": "LinkedIn",
-        "form": {
-            "name": "Name",
-            "email": "Email",
-            "subject": "Subject",
-            "message": "Message",
-            "send": "Send message",
-            "sending": "Sending...",
-            "ok": "Thank you! Your message has been sent.",
-            "invalid": "Please fill in your name, a valid email and a message of at least 15 characters.",
-            "error": "Something went wrong. Please try again a bit later or write to me by email.",
-            "network": "Network error. Please check your connection and try again.",
-            "tooMany": "Too many messages. Please try again in a few minutes."
-        }
+        "linkedinLabel": "LinkedIn"
     }
 }

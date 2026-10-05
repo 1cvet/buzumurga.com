@@ -37,10 +37,22 @@
         "cta": "Связаться",
         "photoAlt": "Михаил Бузумурга",
         "stats": [
-            { "value": "10+", "label": "лет в digital и eCommerce" },
-            { "value": "ploom.ae", "label": "D2C-магазин запущен в срок, я - бизнес-владелец проекта" },
-            { "value": "728%", "label": "рост трафика сайтов (SEO и контекст Purina)" },
-            { "value": "21+", "label": "новых городов для eShop Nestle за 6 месяцев" }
+            {
+                "value": "10+",
+                "label": "лет в digital и eCommerce"
+            },
+            {
+                "value": "ploom.ae",
+                "label": "D2C-магазин запущен в срок, я - бизнес-владелец проекта"
+            },
+            {
+                "value": "728%",
+                "label": "рост трафика сайтов (SEO и контекст Purina)"
+            },
+            {
+                "value": "21+",
+                "label": "новых городов для eShop Nestle за 6 месяцев"
+            }
         ]
     },
     "about": {
@@ -52,16 +64,59 @@
         ],
         "photoAlt": "Михаил Бузумурга выступает на внутреннем мероприятии",
         "facts": [
-            { "term": "Город", "value": "Дубай, ОАЭ" },
-            { "term": "Языки", "value": "русский - родной, английский - C1" }
+            {
+                "term": "Город",
+                "value": "Дубай, ОАЭ"
+            },
+            {
+                "term": "Языки",
+                "value": "русский - родной, английский - C1"
+            }
         ],
         "toolsHeading": "Инструменты и технологии",
         "tools": [
-            { "name": "eCommerce", "items": ["Adobe Commerce / Magento", "интеграции с OMS", "WordPress"] },
-            { "name": "Рост", "items": ["CRM", "платный трафик", "SEO", "GEO / видимость в AI"] },
-            { "name": "Аналитика", "items": ["Google Analytics", "Яндекс Метрика", "Power BI"] },
-            { "name": "Delivery", "items": ["Jira", "GitLab", "Jenkins"] },
-            { "name": "Код", "items": ["PHP", "HTML/CSS", "SQL", "C#"] }
+            {
+                "name": "eCommerce",
+                "items": [
+                    "Adobe Commerce / Magento",
+                    "интеграции с OMS",
+                    "WordPress"
+                ]
+            },
+            {
+                "name": "Рост",
+                "items": [
+                    "CRM",
+                    "платный трафик",
+                    "SEO",
+                    "GEO / видимость в AI"
+                ]
+            },
+            {
+                "name": "Аналитика",
+                "items": [
+                    "Google Analytics",
+                    "Яндекс Метрика",
+                    "Power BI"
+                ]
+            },
+            {
+                "name": "Delivery",
+                "items": [
+                    "Jira",
+                    "GitLab",
+                    "Jenkins"
+                ]
+            },
+            {
+                "name": "Код",
+                "items": [
+                    "PHP",
+                    "HTML/CSS",
+                    "SQL",
+                    "C#"
+                ]
+            }
         ]
     },
     "experience": {
@@ -123,7 +178,7 @@
                 ]
             },
             {
-                "date": "ноя 2017 - дек 2018",
+                "date": "дек 2017 - дек 2018",
                 "place": "Москва",
                 "title": "Junior Business Analyst",
                 "company": "Nestle IT",
@@ -178,7 +233,10 @@
                 "Запустили в срок вместе с глобальными агентством и инженерными партнёрами.",
                 "Сейчас магазин ведёт команда из двух человек; лояльность, реферальная программа и возврат брошенных корзин встроены с самого начала."
             ],
-            "link": { "href": "https://www.ploom.ae/en", "label": "ploom.ae" }
+            "link": {
+                "href": "https://www.ploom.ae/en",
+                "label": "ploom.ae"
+            }
         },
         "casesHeading": "Корпоративные проекты",
         "cases": [
@@ -186,13 +244,19 @@
                 "title": "Интернет-магазин Nestle Infant Nutrition",
                 "role": "DTC eShop Manager",
                 "text": "Вёл DTC-магазин целиком: расширение на 21+ город за 6 месяцев, 10+ улучшений UX и промо-кампании в CRM на основе RFM-сегментации.",
-                "link": { "href": "https://www.nestlebaby.ru/brands", "label": "nestlebaby.ru" }
+                "link": {
+                    "href": "https://www.nestlebaby.ru/brands",
+                    "label": "nestlebaby.ru"
+                }
             },
             {
                 "title": "Внедрение PIM",
                 "role": "Руководитель проекта и бизнес-аналитик",
                 "text": "Внедрение системы управления товарной информацией (PIM) для Nestle - от бизнес-требований до запуска.",
-                "link": { "href": "https://catalog.nestle.ru/", "label": "catalog.nestle.ru" }
+                "link": {
+                    "href": "https://catalog.nestle.ru/",
+                    "label": "catalog.nestle.ru"
+                }
             },
             {
                 "title": "Внедрение CRM",
@@ -213,7 +277,10 @@
                 "title": "Maggi.ru",
                 "role": "Руководитель проекта и бизнес-аналитик",
                 "text": "Перенос сайта Maggi.ru на новую платформу и дальнейшее развитие совместно с агентством.",
-                "link": { "href": "https://www.maggi.ru/", "label": "maggi.ru" }
+                "link": {
+                    "href": "https://www.maggi.ru/",
+                    "label": "maggi.ru"
+                }
             }
         ],
         "sideHeading": "Веб-разработка (сайд-проекты)",
@@ -221,17 +288,28 @@
             {
                 "title": "Cardinals",
                 "text": "Корпоративный сайт международной юридической компании из Дубая: практики, команда, аналитика и заявка на консультацию. Разработан и запущен на WordPress.",
-                "link": { "href": "https://cardinals.law/", "label": "cardinals.law" }
+                "link": {
+                    "href": "https://cardinals.law/",
+                    "label": "cardinals.law"
+                }
             },
             {
                 "title": "Christicrazycake",
                 "text": "Сайт кондитерской студии авторских тортов в Хоргене, Швейцария: вкусы, цены, галерея и заказ через WhatsApp. Разработан и запущен на WordPress.",
-                "link": { "href": "https://christicrazycake.com/", "label": "christicrazycake.com" }
+                "link": {
+                    "href": "https://christicrazycake.com/",
+                    "label": "christicrazycake.com"
+                }
             },
             {
                 "title": "Календарь событий MYIDEM",
                 "text": "Календарь событий для MYIDEM, онлайн-журнала о событиях Москвы, - сделан в сжатые сроки, я был руководителем проекта и бизнес-аналитиком. Проект закрыт.",
-                "image": { "base": "myidem", "width": 640, "height": 640, "alt": "Календарь событий MYIDEM: сетка афиш, сгруппированных по датам" }
+                "image": {
+                    "base": "myidem",
+                    "width": 640,
+                    "height": 640,
+                    "alt": "Календарь событий MYIDEM: сетка афиш, сгруппированных по датам"
+                }
             }
         ],
         "kypito": {
@@ -243,26 +321,71 @@
         "eyebrow": "Образование",
         "heading": "Учусь постоянно.",
         "items": [
-            { "year": "2023 - 2025", "title": "Аспирантура, финансы и экономика - учебная программа пройдена, диссертация пока не защищена", "place": "РЭУ им. Г. В. Плеханова, Москва" },
-            { "year": "2019", "title": "Магистратура, рециклинг", "place": "НИТУ «МИСиС», Москва" },
-            { "year": "2017", "title": "Бакалавриат, бизнес-информатика", "place": "НИТУ «МИСиС», Москва" }
+            {
+                "year": "2023 - 2025",
+                "title": "Аспирантура, финансы и экономика - учебная программа пройдена, диссертация пока не защищена",
+                "place": "РЭУ им. Г. В. Плеханова, Москва"
+            },
+            {
+                "year": "2019",
+                "title": "Магистратура, рециклинг",
+                "place": "НИТУ «МИСиС», Москва"
+            },
+            {
+                "year": "2017",
+                "title": "Бакалавриат, бизнес-информатика",
+                "place": "НИТУ «МИСиС», Москва"
+            }
         ],
         "certsHeading": "Курсы и сертификаты",
         "certs": [
-            { "title": "Проектный менеджмент", "meta": "МИСиС, 72 часа · 2023", "href": "/docs/certificates/misis-project-management.pdf" },
-            { "title": "Agile: гибкая методология", "meta": "МИСиС, 72 часа · 2023", "href": "/docs/certificates/misis-agile.pdf" },
-            { "title": "Communication - Digital Media Manager", "meta": "eBusiness Academy · 2021", "href": "/docs/certificates/ebusiness-academy-digital-media-manager.pdf" }
+            {
+                "title": "Проектный менеджмент",
+                "meta": "МИСиС, 72 часа · 2023",
+                "href": "/docs/certificates/misis-project-management.pdf"
+            },
+            {
+                "title": "Agile: гибкая методология",
+                "meta": "МИСиС, 72 часа · 2023",
+                "href": "/docs/certificates/misis-agile.pdf"
+            },
+            {
+                "title": "Communication - Digital Media Manager",
+                "meta": "eBusiness Academy · 2021",
+                "href": "/docs/certificates/ebusiness-academy-digital-media-manager.pdf"
+            }
         ],
         "sololearn": {
             "label": "7 курсов программирования SoloLearn (2017)",
             "items": [
-                { "title": "Python 3", "href": "/docs/certificates/sololearn-python-3-tutorial.jpg" },
-                { "title": "SQL", "href": "/docs/certificates/sololearn-sql-fundamentals.jpg" },
-                { "title": "PHP", "href": "/docs/certificates/sololearn-php-tutorial.jpg" },
-                { "title": "C#", "href": "/docs/certificates/sololearn-csharp-tutorial.jpg" },
-                { "title": "JavaScript", "href": "/docs/certificates/sololearn-javascript-tutorial.jpg" },
-                { "title": "HTML", "href": "/docs/certificates/sololearn-html-fundamentals.jpg" },
-                { "title": "CSS", "href": "/docs/certificates/sololearn-css-fundamentals.jpg" }
+                {
+                    "title": "Python 3",
+                    "href": "/docs/certificates/sololearn-python-3-tutorial.jpg"
+                },
+                {
+                    "title": "SQL",
+                    "href": "/docs/certificates/sololearn-sql-fundamentals.jpg"
+                },
+                {
+                    "title": "PHP",
+                    "href": "/docs/certificates/sololearn-php-tutorial.jpg"
+                },
+                {
+                    "title": "C#",
+                    "href": "/docs/certificates/sololearn-csharp-tutorial.jpg"
+                },
+                {
+                    "title": "JavaScript",
+                    "href": "/docs/certificates/sololearn-javascript-tutorial.jpg"
+                },
+                {
+                    "title": "HTML",
+                    "href": "/docs/certificates/sololearn-html-fundamentals.jpg"
+                },
+                {
+                    "title": "CSS",
+                    "href": "/docs/certificates/sololearn-css-fundamentals.jpg"
+                }
             ]
         }
     },
@@ -316,27 +439,15 @@
     "contact": {
         "eyebrow": "Контакты",
         "heading": "Напишите мне.",
-        "lead": "Есть вопрос или предложение? Всегда готов обсудить.",
+        "lead": "Есть вопрос или предложение? Пишите на email или в Telegram - всегда готов обсудить.",
         "emailLabel": "Email",
-        "emailHidden": "Включите JavaScript, чтобы увидеть адрес, или воспользуйтесь формой.",
+        "emailHidden": "Включите JavaScript, чтобы увидеть адрес, или напишите мне в Telegram или LinkedIn.",
         "copy": "Копировать",
         "copied": "Скопировано",
         "write": "Написать",
+        "telegramLabel": "Telegram",
         "locationLabel": "Город",
         "location": "Дубай, ОАЭ",
-        "linkedinLabel": "LinkedIn",
-        "form": {
-            "name": "Имя",
-            "email": "Email",
-            "subject": "Тема",
-            "message": "Сообщение",
-            "send": "Отправить",
-            "sending": "Отправляю...",
-            "ok": "Спасибо! Сообщение отправлено.",
-            "invalid": "Укажите имя, корректный email и сообщение не короче 15 символов.",
-            "error": "Что-то пошло не так. Попробуйте чуть позже или напишите мне на email.",
-            "network": "Ошибка сети. Проверьте подключение и попробуйте ещё раз.",
-            "tooMany": "Слишком много сообщений. Попробуйте через несколько минут."
-        }
+        "linkedinLabel": "LinkedIn"
     }
 }

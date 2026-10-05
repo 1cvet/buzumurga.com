@@ -1,7 +1,7 @@
 // Page template. One template for every language; text lives in content/*.json.
 import { esc, md, attr, ext, initials, obfuscate } from './helpers.mjs';
 
-export function renderPage({ c, site, lang, alt, asset, picture }) {
+export function renderPage({ c, site, lang, alt, asset, picture, styles }) {
     const url = site.domain + lang.path;
     const nav = [
         ['about', c.ui.nav.about],
@@ -31,7 +31,7 @@ export function renderPage({ c, site, lang, alt, asset, picture }) {
             image: site.domain + c.meta.ogImage,
             alumniOf: { '@type': 'CollegeOrUniversity', name: 'National University of Science and Technology MISIS' },
             knowsLanguage: ['ru', 'en'],
-            sameAs: [site.linkedin],
+            sameAs: [site.linkedin, site.telegram],
         },
     };
 
@@ -66,9 +66,9 @@ ${site.languages.map(l => `    <link rel="alternate" hreflang="${l.code}" href="
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-${lang.code === 'en' ? `    <link rel="preload" href="${asset('fonts/montserrat-regular-webfont.woff2')}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="${asset('fonts/montserrat-extrabold-webfont.woff2')}" as="font" type="font/woff2" crossorigin>
-` : ''}    <link rel="stylesheet" href="${asset('css/style.css')}">
+    <link rel="preload" href="${asset(`fonts/montserrat-${lang.code === 'ru' ? 'cyrillic' : 'latin'}-400-normal.woff2`)}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="${asset('fonts/montserrat-latin-800-normal.woff2')}" as="font" type="font/woff2" crossorigin>
+    <style>${styles('css/style.css')}</style>
     <script src="${asset('js/boot.js')}" data-metrika="${site.metrikaId}"></script>
     <script src="${asset('js/main.js')}" defer></script>
     <script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>
@@ -303,58 +303,32 @@ ${c.testimonials.items.map((t, i) => `                    <figure class="quote${
                         <h2>${esc(c.contact.heading)}</h2>
                     </div>
                     <p class="lead">${esc(c.contact.lead)}</p>
-
-                    <ul class="contacts">
-                        <li>
-                            <span class="contacts__label">${esc(c.contact.emailLabel)}</span>
-                            <span class="email" data-e="${obfuscate(site.email)}">
-                                <span class="email__addr">${esc(c.contact.emailHidden)}</span>
-                                <span class="email__actions" hidden>
-                                    <button class="chip-btn" type="button" data-copy data-copied="${attr(c.contact.copied)}">${esc(c.contact.copy)}</button>
-                                    <a class="chip-btn" data-mailto href="#contact">${esc(c.contact.write)}</a>
-                                </span>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="contacts__label">${esc(c.contact.linkedinLabel)}</span>
-                            <a href="${attr(site.linkedin)}"${ext}>linkedin.com/in/m-buzumurga</a>
-                        </li>
-                        <li>
-                            <span class="contacts__label">${esc(c.contact.locationLabel)}</span>
-                            <span>${esc(c.contact.location)}</span>
-                        </li>
-                    </ul>
                 </div>
 
-                <form class="form reveal" id="contact-form" action="${site.contactEndpoint}" method="post"
-                      data-msg-sending="${attr(c.contact.form.sending)}" data-msg-ok="${attr(c.contact.form.ok)}"
-                      data-msg-invalid="${attr(c.contact.form.invalid)}" data-msg-error="${attr(c.contact.form.error)}"
-                      data-msg-network="${attr(c.contact.form.network)}" data-msg-toomany="${attr(c.contact.form.tooMany)}">
-                    <input type="hidden" name="lang" value="${lang.code}">
-                    <input type="hidden" name="ts" value="">
-                    <div class="field">
-                        <label for="f-name">${esc(c.contact.form.name)}</label>
-                        <input type="text" id="f-name" name="name" autocomplete="name" required minlength="2" maxlength="100">
-                    </div>
-                    <div class="field">
-                        <label for="f-email">${esc(c.contact.form.email)}</label>
-                        <input type="email" id="f-email" name="email" autocomplete="email" required maxlength="200">
-                    </div>
-                    <div class="field">
-                        <label for="f-subject">${esc(c.contact.form.subject)}</label>
-                        <input type="text" id="f-subject" name="subject" maxlength="200">
-                    </div>
-                    <div class="field">
-                        <label for="f-message">${esc(c.contact.form.message)}</label>
-                        <textarea id="f-message" name="message" rows="5" required minlength="15" maxlength="5000"></textarea>
-                    </div>
-                    <div class="hp" aria-hidden="true">
-                        <label for="f-website">Website</label>
-                        <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
-                    </div>
-                    <button class="btn btn--solid btn--light" type="submit">${esc(c.contact.form.send)}</button>
-                    <p class="form__status" role="status" aria-live="polite"></p>
-                </form>
+                <ul class="contacts reveal">
+                    <li>
+                        <span class="contacts__label">${esc(c.contact.emailLabel)}</span>
+                        <span class="email" data-e="${obfuscate(site.email)}">
+                            <span class="email__addr">${esc(c.contact.emailHidden)}</span>
+                            <span class="email__actions" hidden>
+                                <button class="chip-btn" type="button" data-copy data-copied="${attr(c.contact.copied)}">${esc(c.contact.copy)}</button>
+                                <a class="chip-btn" data-mailto href="#contact">${esc(c.contact.write)}</a>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="contacts__label">${esc(c.contact.telegramLabel)}</span>
+                        <a href="${attr(site.telegram)}"${ext}>${esc(site.telegramHandle)}</a>
+                    </li>
+                    <li>
+                        <span class="contacts__label">${esc(c.contact.linkedinLabel)}</span>
+                        <a href="${attr(site.linkedin)}"${ext}>linkedin.com/in/m-buzumurga</a>
+                    </li>
+                    <li>
+                        <span class="contacts__label">${esc(c.contact.locationLabel)}</span>
+                        <span>${esc(c.contact.location)}</span>
+                    </li>
+                </ul>
             </div>
         </section>
     </main>

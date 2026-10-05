@@ -2,12 +2,13 @@
 
 Это инструкция для Claude на сервере (или для человека с root-доступом).
 Файлы, на которые она ссылается, лежат в этом репозитории.
+Сайт полностью статический: никаких сервисов, баз данных и рантаймов на сервере ему не нужно, только Nginx и certbot.
 
 ## Жёсткие правила
 
 - **Конфиги Kypito и других проектов не трогать.** Ни файлы, ни сертификаты, ни сервисы, ни порты.
 - Перед каждым `systemctl reload nginx`: бэкап `/etc/nginx` и `nginx -t`. Если `nginx -t` падает, ничего не перезагружать.
-- Секреты (токен бота, приватные ключи) никогда не коммитить и не выводить целиком в отчёты.
+- Секреты (приватные ключи) никогда не коммитить и не выводить целиком в отчёты.
 - Этапы 1-3 выполнять только после «ок» владельца на отчёт по этапу 0.
 
 Все команды ниже выполняются из корня копии репозитория на сервере, например:
@@ -28,12 +29,9 @@ bash deploy/audit.sh 2>&1 | tee /tmp/buzumurga-audit.txt
 1. ОС, версия Nginx (>= 1.25.1? есть ли brotli), есть ли IPv6.
 2. Список server-блоков: какие домены и порты заняты, где конфиг Kypito (только путь, не трогать).
 3. Certbot: установлен ли, как продлевается (timer / cron), есть ли `/etc/letsencrypt/options-ssl-nginx.conf`.
-4. Рантаймы: Node (версия, путь `command -v node`), PHP, Python. На чём работает Kypito.
-5. Свободен ли порт 8787 на 127.0.0.1 (иначе выбрать другой и поменять в конфиге Nginx и env).
-6. Firewall: открыты ли 80/443.
-7. Есть ли `rsync` и `/usr/bin/rrsync`.
-8. Доступен ли `api.telegram.org`, открыт ли SMTP 587.
-9. Куда сейчас указывают DNS-записи четырёх доменов.
+4. Firewall: открыты ли 80/443.
+5. Есть ли `rsync` и `/usr/bin/rrsync`.
+6. Куда сейчас указывают DNS-записи четырёх доменов.
 
 Если в выводе `nginx -T` есть секреты (токены в заголовках, пароли), замаскируйте их перед отправкой.
 
@@ -84,31 +82,12 @@ nginx -t && systemctl reload nginx
 
 Нет IPv6 - удалить строки `listen [::]...`. Если на сервере `conf.d` вместо `sites-enabled`, положить файл туда.
 
-### 1.3 Сервис формы обратной связи (Node 18+, без зависимостей)
-
-```bash
-useradd --system --no-create-home --shell /usr/sbin/nologin buzumurga-contact
-install -d -m 755 /opt/buzumurga-contact
-install -m 644 server/contact/server.mjs /opt/buzumurga-contact/server.mjs
-install -m 600 server/contact/contact.env.example /etc/buzumurga-contact.env
-# вписать TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID (см. «Telegram-бот» ниже)
-nano /etc/buzumurga-contact.env
-install -m 644 server/contact/buzumurga-contact.service /etc/systemd/system/
-# проверить путь к node в ExecStart: command -v node
-systemctl daemon-reload && systemctl enable --now buzumurga-contact
-systemctl status buzumurga-contact --no-pager
-curl -s http://127.0.0.1:8787/healthz   # ok
-```
-
-Если Node на сервере нет, а Kypito работает на Python, сообщите владельцу: сервис можно переписать на Python
-(та же логика, ~100 строк). Ставить Node «просто так» без согласования не нужно.
-
-### 1.4 Первая выкладка
+### 1.3 Первая выкладка
 
 Владелец добавляет секреты, переменную репозитория `DEPLOY_ENABLED=true` и запускает workflow **Deploy**
 (Actions → Deploy → Run workflow на ветке master). Smoke test в конце будет жёлтым, пока DNS смотрит на старый хостинг, это нормально.
 
-### 1.5 Проверка до смены DNS
+### 1.4 Проверка до смены DNS
 
 ```bash
 IP=<публичный IP>
@@ -116,9 +95,6 @@ for p in / /ru/ /Buzumurga_Mikhail.pdf /docs/certificates/misis-agile.pdf /yande
   printf '%-40s ' $p; curl -s -o /dev/null -w '%{http_code}\n' --resolve buzumurga.com:80:$IP http://buzumurga.com$p
 done
 # ожидается 200 везде, /nope -> 404
-curl -s -H 'Accept: application/json' --resolve buzumurga.com:80:$IP \
-  -d "ts=1&name=Server test&email=test@example.com&message=Test message from the server" http://buzumurga.com/api/contact
-# ожидается {"ok":true,...} и сообщение в Telegram
 ```
 
 ---
@@ -152,7 +128,7 @@ certbot certonly --webroot -w /var/www/certbot \
 
 cp -a /etc/nginx /root/nginx-backup-$(date +%F-%H%M)
 cp deploy/nginx/buzumurga.com.conf /etc/nginx/sites-available/buzumurga.com.conf
-# поправить по аудиту: IPv6, http2 (>= 1.25.1: "listen 443 ssl;" + "http2 on;"), порт сервиса формы
+# поправить по аудиту: IPv6, http2 (>= 1.25.1: "listen 443 ssl;" + "http2 on;")
 nginx -t && systemctl reload nginx
 certbot renew --dry-run
 ```
@@ -171,21 +147,6 @@ curl -sI https://buzumurga.com/Buzumurga_Mikhail.docx | grep -i location   # -> 
 
 ---
 
-## Telegram-бот (делает владелец, 2 минуты)
-
-1. В Telegram откройте **@BotFather** → `/newbot`.
-2. Имя: `buzumurga.com contact`, username: любой свободный, например `buzumurga_site_bot`.
-3. BotFather пришлёт токен вида `123456789:AA...` - это `TELEGRAM_BOT_TOKEN`. Никому, кроме сервера, его не отправляйте.
-4. Откройте своего нового бота и нажмите **Start** (или отправьте любое сообщение).
-5. Узнайте chat_id: на сервере выполните
-   `curl -s "https://api.telegram.org/bot<ТОКЕН>/getUpdates" | grep -o '"chat":{"id":[0-9-]*'`
-   Число после `"id":` - это `TELEGRAM_CHAT_ID`.
-6. Оба значения впишите в `/etc/buzumurga-contact.env` и перезапустите: `systemctl restart buzumurga-contact`.
-
-Это отдельный бот, бот Kypito не используется.
-
----
-
 ## Что где
 
 | Путь на сервере | Что |
@@ -194,7 +155,4 @@ curl -sI https://buzumurga.com/Buzumurga_Mikhail.docx | grep -i location   # -> 
 | `/var/www/certbot` | ACME-челленджи |
 | `/etc/nginx/sites-available/buzumurga.com.conf` | конфиг сайта |
 | `/etc/nginx/snippets/buzumurga-*.conf` | заголовки безопасности и блок-лист IP |
-| `/opt/buzumurga-contact/server.mjs` | сервис формы |
-| `/etc/buzumurga-contact.env` | токен бота и chat_id (600, root) |
 | `/var/log/nginx/buzumurga.com.*.log` | логи сайта |
-| `journalctl -u buzumurga-contact` | логи формы |

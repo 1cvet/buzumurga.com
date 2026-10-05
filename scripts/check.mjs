@@ -35,7 +35,6 @@ for (const file of pages) {
         }
         const url = new URL(ref, 'https://buzumurga.com' + page);
         if (url.origin !== 'https://buzumurga.com') continue;
-        if (url.pathname.startsWith('/api/')) continue;
         let target = join(dist, decodeURIComponent(url.pathname));
         if (url.pathname.endsWith('/')) target = join(target, 'index.html');
         if (!existsSync(target)) { errors.push(`${page}: broken link ${ref}`); continue; }

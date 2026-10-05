@@ -1,7 +1,7 @@
 // Bilingual 404 page.
 import { esc } from './helpers.mjs';
 
-export function render404({ en, ru, asset }) {
+export function render404({ en, ru, asset, styles }) {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +11,7 @@ export function render404({ en, ru, asset }) {
     <meta name="robots" content="noindex">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="${asset('css/style.css')}">
+    <style>${styles('css/style.css')}</style>
     <script src="${asset('js/boot.js')}"></script>
 </head>
 <body>

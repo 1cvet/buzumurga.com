@@ -25,10 +25,8 @@ section "certbot"
 certbot --version 2>&1; certbot certificates 2>&1 | grep -E 'Certificate Name|Domains|Expiry|Path' ; systemctl list-timers 2>/dev/null | grep -i certbot
 ls /etc/letsencrypt/options-ssl-nginx.conf /etc/letsencrypt/ssl-dhparams.pem 2>&1
 
-section "runtimes"
-for b in node npm php php-fpm python3 pm2 docker; do printf '%-8s ' "$b"; command -v $b >/dev/null && ($b --version 2>&1 | head -1) || echo "-"; done
-systemctl list-units --type=service --state=running 2>/dev/null | grep -iE 'node|php|python|pm2|gunicorn|uvicorn|docker|kypito' || true
-pm2 ls 2>/dev/null || true
+section "rsync / rrsync"
+command -v rsync rrsync || echo "rsync/rrsync not found"
 
 section "listening ports"
 ss -ltnp 2>/dev/null
@@ -40,11 +38,6 @@ section "web roots and users"
 ls -la /var/www/ 2>/dev/null; id deploy 2>&1; getent passwd | awk -F: '$3>=1000 {print $1, $6, $7}'
 section "ssh"
 sshd -T 2>/dev/null | grep -E '^(port|permitrootlogin|passwordauthentication|pubkeyauthentication|allowusers) '
-
-section "outbound SMTP (Hetzner usually blocks 25/465)"
-for port in 25 465 587; do timeout 5 bash -c "</dev/tcp/smtp.gmail.com/$port" 2>/dev/null && echo "$port open" || echo "$port blocked"; done
-section "Telegram API reachable"
-curl -s -o /dev/null -w '%{http_code}\n' --max-time 8 https://api.telegram.org/
 
 section "DNS today"
 for d in buzumurga.com www.buzumurga.com buzumur.ga www.buzumur.ga; do printf '%-20s A: %s  AAAA: %s\n' $d "$(dig +short A $d | tr '\n' ' ')" "$(dig +short AAAA $d | tr '\n' ' ')"; done
