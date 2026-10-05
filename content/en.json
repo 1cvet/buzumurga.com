@@ -318,25 +318,12 @@
         "heading": "Say hello.",
         "lead": "Have a question or a proposal? I'm always ready to discuss.",
         "emailLabel": "Email",
-        "emailHidden": "Enable JavaScript to see the address, or use the form.",
+        "emailHidden": "Enable JavaScript to see the address, or write to me on LinkedIn.",
         "copy": "Copy",
         "copied": "Copied",
         "write": "Write",
         "locationLabel": "Location",
         "location": "Dubai, UAE",
-        "linkedinLabel": "LinkedIn",
-        "form": {
-            "name": "Name",
-            "email": "Email",
-            "subject": "Subject",
-            "message": "Message",
-            "send": "Send message",
-            "sending": "Sending...",
-            "ok": "Thank you! Your message has been sent.",
-            "invalid": "Please fill in your name, a valid email and a message of at least 15 characters.",
-            "error": "Something went wrong. Please try again a bit later or write to me by email.",
-            "network": "Network error. Please check your connection and try again.",
-            "tooMany": "Too many messages. Please try again in a few minutes."
-        }
+        "linkedinLabel": "LinkedIn"
     }
 }

@@ -402,30 +402,6 @@ button { font: inherit; }
 }
 .chip-btn:hover { border-color: var(--dark-accent); color: var(--dark-accent); }
 
-.form {
-    padding: clamp(24px, 4vw, 40px);
-    background: rgba(255, 255, 255, .04);
-    border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--radius);
-}
-.field { margin-bottom: 20px; }
-.field label { display: block; margin-bottom: 8px; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--dark-muted); }
-.field input, .field textarea {
-    width: 100%; padding: 14px 16px;
-    background: rgba(255, 255, 255, .06); color: var(--dark-text);
-    border: 1px solid rgba(255, 255, 255, .18); border-radius: 10px;
-    font: 400 1rem/1.5 var(--sans);
-    transition: border-color .2s, background-color .2s;
-}
-.field textarea { resize: vertical; min-height: 140px; }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--dark-accent); background: rgba(255, 255, 255, .09); }
-.field.is-invalid input, .field.is-invalid textarea { border-color: #ff9a9c; }
-.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-.form .btn--solid { background: #e8676b; border-color: #e8676b; color: #160707; }
-.form .btn--solid:hover { background: var(--dark-text); border-color: var(--dark-text); color: var(--dark-bg); }
-.form__status { min-height: 1.5em; margin: 16px 0 0; font-size: .95rem; }
-.form__status.is-ok { color: #9ee0ae; }
-.form__status.is-error { color: #ffa7a9; }
-
 /* footer */
 .footer { padding: 28px 0; background: var(--dark-bg); color: var(--dark-muted); border-top: 1px solid rgba(255, 255, 255, .08); font-size: .88rem; }
 .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
@@ -512,7 +488,7 @@ button { font: inherit; }
 }
 
 @media print {
-    .header, .form, .hero__cta, .footer, .quotes__actions { display: none; }
+    .header, .hero__cta, .footer, .quotes__actions { display: none; }
     .section--dark, .featured { background: none; color: #000; }
     .js .reveal { opacity: 1; transform: none; }
     .js .quotes .quote--extra { display: flex; }

@@ -296,7 +296,7 @@ ${c.testimonials.items.map((t, i) => `                    <figure class="quote${
         </section>
 
         <section class="section section--dark" id="contact">
-            <div class="container grid-2">
+            <div class="container">
                 <div class="reveal">
                     <div class="section__head">
                         <p class="eyebrow">${esc(c.contact.eyebrow)}</p>
@@ -325,36 +325,6 @@ ${c.testimonials.items.map((t, i) => `                    <figure class="quote${
                         </li>
                     </ul>
                 </div>
-
-                <form class="form reveal" id="contact-form" action="${site.contactEndpoint}" method="post"
-                      data-msg-sending="${attr(c.contact.form.sending)}" data-msg-ok="${attr(c.contact.form.ok)}"
-                      data-msg-invalid="${attr(c.contact.form.invalid)}" data-msg-error="${attr(c.contact.form.error)}"
-                      data-msg-network="${attr(c.contact.form.network)}" data-msg-toomany="${attr(c.contact.form.tooMany)}">
-                    <input type="hidden" name="lang" value="${lang.code}">
-                    <input type="hidden" name="ts" value="">
-                    <div class="field">
-                        <label for="f-name">${esc(c.contact.form.name)}</label>
-                        <input type="text" id="f-name" name="name" autocomplete="name" required minlength="2" maxlength="100">
-                    </div>
-                    <div class="field">
-                        <label for="f-email">${esc(c.contact.form.email)}</label>
-                        <input type="email" id="f-email" name="email" autocomplete="email" required maxlength="200">
-                    </div>
-                    <div class="field">
-                        <label for="f-subject">${esc(c.contact.form.subject)}</label>
-                        <input type="text" id="f-subject" name="subject" maxlength="200">
-                    </div>
-                    <div class="field">
-                        <label for="f-message">${esc(c.contact.form.message)}</label>
-                        <textarea id="f-message" name="message" rows="5" required minlength="15" maxlength="5000"></textarea>
-                    </div>
-                    <div class="hp" aria-hidden="true">
-                        <label for="f-website">Website</label>
-                        <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
-                    </div>
-                    <button class="btn btn--solid btn--light" type="submit">${esc(c.contact.form.send)}</button>
-                    <p class="form__status" role="status" aria-live="polite"></p>
-                </form>
             </div>
         </section>
     </main>
