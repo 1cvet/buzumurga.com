@@ -1,0 +1,49 @@
+# Выкладка сайта buzumurga.com на хостинг по FTP/FTPS.
+# Запуск вручную: GitHub -> Actions -> "Deploy buzumurga.com" -> Run workflow.
+#
+# Перед первым запуском добавьте секреты в Settings -> Secrets and variables -> Actions:
+#   FTP_SERVER      - адрес FTP-сервера хостинга (например, ftp.example.ru)
+#   FTP_USERNAME    - логин FTP
+#   FTP_PASSWORD    - пароль FTP
+#   FTP_SERVER_DIR  - папка сайта на сервере, со слешем в конце (например, /buzumurga.com/public_html/)
+name: Deploy buzumurga.com
+
+on:
+  workflow_dispatch:
+    inputs:
+      protocol:
+        description: "Протокол (ftp или ftps)"
+        required: true
+        default: "ftps"
+        type: choice
+        options: [ftps, ftp]
+      dry_run:
+        description: "Пробный запуск - только показать, что будет загружено"
+        required: true
+        default: false
+        type: boolean
+
+concurrency:
+  group: deploy-buzumurga
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload site via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          protocol: ${{ inputs.protocol }}
+          local-dir: ./buzumurga.com/
+          dry-run: ${{ inputs.dry_run }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            README.md
