@@ -1,0 +1,100 @@
+# Build, check and deploy buzumurga.com to the VPS over SSH (rsync).
+# Runs on every push to master and manually (Actions -> Deploy -> Run workflow);
+# on pull requests it only builds and checks.
+#
+# Repository secrets (Settings -> Secrets and variables -> Actions):
+#   SSH_HOST         server IP or hostname
+#   SSH_USER         deploy (owns only /var/www/buzumurga.com)
+#   SSH_KEY          private key of the deploy user (ed25519)
+#   SSH_KNOWN_HOSTS  output of `ssh-keyscan -t ed25519 <host>`
+#   SSH_PORT         optional, default 22
+# On the server the key is locked to /var/www/buzumurga.com with rrsync (see deploy/SERVER.md),
+# so remote paths below are relative to that directory.
+# Repository variable DEPLOY_ENABLED=true turns the upload on (set it once the server is ready);
+# until then the workflow only builds and checks.
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-buzumurga
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dev tools
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Check HTML and internal links
+        run: npm run check
+
+      - name: Check external links (warning only)
+        continue-on-error: true
+        run: npm run check:external
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Upload
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          RSH="ssh -p ${SSH_PORT:-22} -i $HOME/.ssh/id_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes"
+          # 1) new fingerprinted assets first, old ones are kept so open pages keep working
+          rsync -rlz --checksum -e "$RSH" dist/assets/ "$SSH_USER@$SSH_HOST:assets/"
+          # 2) then pages and the rest; files removed from the build are removed on the server
+          rsync -rlz --checksum --delete --exclude=/assets/ -e "$RSH" dist/ "$SSH_USER@$SSH_HOST:./"
+
+      - name: Smoke test
+        # fails until DNS points to the new server, so it only warns
+        continue-on-error: true
+        run: |
+          for url in https://buzumurga.com/ https://buzumurga.com/ru/ https://buzumurga.com/Buzumurga_Mikhail.pdf; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$url")
+            echo "$code $url"
+            [ "$code" = "200" ] || exit 1
+          done

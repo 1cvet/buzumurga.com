@@ -1,0 +1,32 @@
+# /etc/systemd/system/buzumurga-contact.service
+[Unit]
+Description=buzumurga.com contact form endpoint
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=buzumurga-contact
+Group=buzumurga-contact
+EnvironmentFile=/etc/buzumurga-contact.env
+# adjust the node path to the audit result (`command -v node`), Node 18+ is required
+ExecStart=/usr/bin/node /opt/buzumurga-contact/server.mjs
+Restart=on-failure
+RestartSec=5
+
+# hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryMax=128M
+
+[Install]
+WantedBy=multi-user.target

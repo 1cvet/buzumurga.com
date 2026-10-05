@@ -1,0 +1,16 @@
+{
+    "name": "buzumurga.com",
+    "private": true,
+    "type": "module",
+    "description": "Personal website of Mikhail Buzumurga (EN/RU)",
+    "scripts": {
+        "build": "node build.mjs",
+        "check": "html-validate \"dist/**/index.html\" dist/404.html && node scripts/check.mjs",
+        "check:external": "node scripts/check.mjs --external",
+        "og": "node scripts/og.mjs"
+    },
+    "engines": { "node": ">=18" },
+    "devDependencies": {
+        "html-validate": "^9.0.0"
+    }
+}
