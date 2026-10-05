@@ -1,5 +1,6 @@
 # Build, check and deploy buzumurga.com to the VPS over SSH (rsync).
-# Runs on every push to main and manually (Actions -> Deploy -> Run workflow).
+# Runs on every push to master and manually (Actions -> Deploy -> Run workflow);
+# on pull requests it only builds and checks.
 #
 # Repository secrets (Settings -> Secrets and variables -> Actions):
 #   SSH_HOST         server IP or hostname
@@ -15,7 +16,8 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -56,7 +58,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main' && vars.DEPLOY_ENABLED == 'true'
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && vars.DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     environment: production
     steps:

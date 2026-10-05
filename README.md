@@ -19,7 +19,7 @@ Static pages built from one template and two content files, plus a tiny contact-
 | `cv/Buzumurga_Mikhail.docx` | CV source (not published); export to `static/Buzumurga_Mikhail.pdf` |
 | `server/contact/` | Contact endpoint (`POST /api/contact` -> Telegram), systemd unit, env example |
 | `deploy/` | Nginx configs, server audit script, server setup guide (`deploy/SERVER.md`) |
-| `.github/workflows/deploy.yml` | Build, checks and rsync deploy to the VPS |
+| `.github/workflows/deploy.yml` | Build and checks on every PR; rsync deploy to the VPS on `master` |
 
 ## Everyday tasks
 
@@ -29,7 +29,7 @@ node scripts/serve.mjs 8080    # preview at http://127.0.0.1:8080/
 npm install && npm run check   # HTML validation + link check (what CI runs)
 ```
 
-- **Change a text:** edit `content/en.json` and `content/ru.json`, push to `main` - the site deploys itself.
+- **Change a text:** edit `content/en.json` and `content/ru.json`, push to `master` - the site deploys itself.
   Inline markup in texts: `[text](https://link)` and `*emphasis*`. Use a hyphen "-", never a long dash.
 - **New CV:** edit `cv/Buzumurga_Mikhail.docx`, export to PDF
   (`soffice --headless --convert-to pdf cv/Buzumurga_Mikhail.docx --outdir static/`), keep the file name.

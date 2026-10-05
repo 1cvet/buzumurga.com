@@ -106,7 +106,7 @@ curl -s http://127.0.0.1:8787/healthz   # ok
 ### 1.4 Первая выкладка
 
 Владелец добавляет секреты, переменную репозитория `DEPLOY_ENABLED=true` и запускает workflow **Deploy**
-(Actions → Deploy → Run workflow на ветке main). Smoke test в конце будет жёлтым, пока DNS смотрит на старый хостинг, это нормально.
+(Actions → Deploy → Run workflow на ветке master). Smoke test в конце будет жёлтым, пока DNS смотрит на старый хостинг, это нормально.
 
 ### 1.5 Проверка до смены DNS
 
