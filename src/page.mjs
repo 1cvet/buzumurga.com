@@ -140,7 +140,7 @@ ${c.hero.stats.map(s => `                    <li><strong${/^\d+/.test(s.value) ?
         <section class="section" id="about">
             <div class="container grid-about">
                 <div class="about__media reveal">
-                    ${picture('speaking', { widths: [480, 850], width: 850, height: 1200, sizes: '(max-width: 900px) 100vw, 400px', alt: c.about.photoAlt })}
+                    ${picture('speaking', { widths: [480, 780], width: 780, height: 1100, sizes: '(max-width: 900px) 100vw, 400px', alt: c.about.photoAlt })}
                 </div>
                 <div class="about reveal">
                     <p class="eyebrow">${esc(c.about.eyebrow)}</p>
