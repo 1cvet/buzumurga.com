@@ -255,7 +255,7 @@ button { font: inherit; }
 
 /* about */
 .grid-about { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
-.about__media img { width: 100%; aspect-ratio: 780 / 1100; object-fit: cover; border-radius: 20px; background: var(--bg-alt); }
+.about__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; background: var(--bg-alt); }
 .about h2 { margin-bottom: 28px; }
 .about p:not(.lead):not(.eyebrow) { color: var(--muted); }
 .facts { margin: 28px 0 0; border-top: 1px solid var(--line); }
