@@ -21,12 +21,14 @@ const content = lang => JSON.parse(readFileSync(join(root, `content/${lang}.json
 
 function page(lang) {
     const c = content(lang);
-    const sans = lang === 'en' ? '"Montserrat", sans-serif' : '"Noto Sans", "DejaVu Sans", sans-serif';
-    const serif = lang === 'en' ? '"Libre Baskerville", serif' : '"Noto Serif", "DejaVu Serif", serif';
+    const sans = '"Montserrat", sans-serif';
+    const serif = '"Libre Baskerville", serif';
     const [before, accent, after] = c.hero.title.split('*');
     return `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
-        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("${font('montserrat-semibold-webfont.woff2')}"); }
-        @font-face { font-family: "Montserrat"; font-weight: 800; src: url("${font('montserrat-extrabold-webfont.woff2')}"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("${font('montserrat-latin-600-normal.woff2')}"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("${font('montserrat-cyrillic-600-normal.woff2')}"); unicode-range: U+0400-045F; }
+        @font-face { font-family: "Montserrat"; font-weight: 800; src: url("${font('montserrat-latin-800-normal.woff2')}"); }
+        @font-face { font-family: "Montserrat"; font-weight: 800; src: url("${font('montserrat-cyrillic-800-normal.woff2')}"); unicode-range: U+0400-045F; }
         @font-face { font-family: "Libre Baskerville"; font-style: italic; src: url("${font('librebaskerville-italic-webfont.woff2')}"); }
         * { margin: 0; box-sizing: border-box; }
         body { width: 1200px; height: 630px; display: flex; background: #f6f3ee; color: #1c1a19; font-family: ${sans}; }

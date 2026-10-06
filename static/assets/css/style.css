@@ -2,15 +2,22 @@
    buzumurga.com
    ========================================================================== */
 
-/* Montserrat and Libre Baskerville files are Latin-only. Cyrillic falls back to
-   the system fonts in the stacks below until Cyrillic files are added. */
-@font-face { font-family: "Montserrat"; font-weight: 400; font-display: swap; src: url("../fonts/montserrat-regular-webfont.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-weight: 500; font-display: swap; src: url("../fonts/montserrat-medium-webfont.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-weight: 600; font-display: swap; src: url("../fonts/montserrat-semibold-webfont.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-weight: 700; font-display: swap; src: url("../fonts/montserrat-bold-webfont.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-weight: 800; font-display: swap; src: url("../fonts/montserrat-extrabold-webfont.woff2") format("woff2"); }
-@font-face { font-family: "Libre Baskerville"; font-weight: 400; font-display: swap; src: url("../fonts/librebaskerville-regular-webfont.woff2") format("woff2"); }
-@font-face { font-family: "Libre Baskerville"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/librebaskerville-italic-webfont.woff2") format("woff2"); }
+/* Montserrat (latin + cyrillic subsets) and Libre Baskerville; Libre Baskerville has no
+   Cyrillic, so Russian italics use Lora through the same family name and unicode-range. */
+@font-face { font-family: "Montserrat"; font-weight: 400; font-display: swap; src: url("../fonts/montserrat-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-weight: 400; font-display: swap; src: url("../fonts/montserrat-cyrillic-400-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Montserrat"; font-weight: 500; font-display: swap; src: url("../fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-weight: 500; font-display: swap; src: url("../fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Montserrat"; font-weight: 600; font-display: swap; src: url("../fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-weight: 600; font-display: swap; src: url("../fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Montserrat"; font-weight: 700; font-display: swap; src: url("../fonts/montserrat-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-weight: 700; font-display: swap; src: url("../fonts/montserrat-cyrillic-700-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Montserrat"; font-weight: 800; font-display: swap; src: url("../fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-weight: 800; font-display: swap; src: url("../fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Libre Baskerville"; font-weight: 400; font-display: swap; src: url("../fonts/librebaskerville-regular-webfont.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Libre Baskerville"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/librebaskerville-italic-webfont.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Libre Baskerville"; font-weight: 400; font-display: swap; src: url("../fonts/lora-cyrillic-400-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Libre Baskerville"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/lora-cyrillic-400-italic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 
 /* tokens
    ========================================================================== */
@@ -35,13 +42,6 @@
     --container: 1180px;
     --header-h: 68px;
     color-scheme: light;
-}
-
-/* The webfonts have no Cyrillic: the Russian page uses one system stack for
-   all text so Latin and Cyrillic words do not mix two different typefaces. */
-:root:lang(ru) {
-    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --serif: Georgia, "Times New Roman", serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -255,7 +255,7 @@ button { font: inherit; }
 
 /* about */
 .grid-about { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
-.about__media img { width: 100%; aspect-ratio: 850 / 1200; object-fit: cover; border-radius: 20px; background: var(--bg-alt); }
+.about__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; background: var(--bg-alt); }
 .about h2 { margin-bottom: 28px; }
 .about p:not(.lead):not(.eyebrow) { color: var(--muted); }
 .facts { margin: 28px 0 0; border-top: 1px solid var(--line); }
@@ -384,7 +384,7 @@ button { font: inherit; }
 .quotes__actions .card__link { margin: 0; padding: 0; }
 
 /* contact */
-.contacts { margin: 32px 0 0; border-top: 1px solid rgba(255, 255, 255, .14); }
+.contacts { margin: 0; align-self: start; border-top: 1px solid rgba(255, 255, 255, .14); }
 .contacts li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, .14); align-items: center; }
 .contacts__label { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--dark-muted); }
 .contacts a { font-weight: 500; text-decoration: none; }

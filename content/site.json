@@ -3,10 +3,22 @@
     "domain": "https://buzumurga.com",
     "email": "buzumurga.m@gmail.com",
     "linkedin": "https://www.linkedin.com/in/m-buzumurga/",
+    "telegram": "https://t.me/Buzumurga_m",
+    "telegramHandle": "@Buzumurga_m",
     "metrikaId": 80111218,
     "cv": "/Buzumurga_Mikhail.pdf",
     "languages": [
-        { "code": "en", "path": "/", "label": "EN", "locale": "en_US" },
-        { "code": "ru", "path": "/ru/", "label": "RU", "locale": "ru_RU" }
+        {
+            "code": "en",
+            "path": "/",
+            "label": "EN",
+            "locale": "en_US"
+        },
+        {
+            "code": "ru",
+            "path": "/ru/",
+            "label": "RU",
+            "locale": "ru_RU"
+        }
     ]
 }

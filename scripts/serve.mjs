@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Local preview of dist/ that mimics the production Nginx setup:
 // gzip, long cache for /assets/, short cache for HTML, 404 page, the CSP from deploy/nginx.
-// Usage: node scripts/serve.mjs [port].
+// Usage: node scripts/serve.mjs [port]
 import { createServer } from 'node:http';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';

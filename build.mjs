@@ -56,6 +56,7 @@ const files = walk(assetsDir).map(f => relative(assetsDir, f).split('\\').join('
 for (const rel of files.filter(f => !f.endsWith('.css'))) {
     assetMap[rel] = fingerprint(rel, readFileSync(join(assetsDir, rel)));
 }
+const inlineCss = {};
 for (const rel of files.filter(f => f.endsWith('.css'))) {
     const css = readFileSync(join(assetsDir, rel), 'utf8').replace(/url\(["']?([^"')]+)["']?\)/g, (match, ref) => {
         if (/^(data:|https?:|#)/.test(ref)) return match;
@@ -64,6 +65,13 @@ for (const rel of files.filter(f => f.endsWith('.css'))) {
         return `url("${assetMap[target]}")`;
     });
     assetMap[rel] = fingerprint(rel, Buffer.from(css));
+    inlineCss[rel] = css;
+}
+
+// The stylesheet is small, so pages inline it (one request less before the first paint).
+function styles(rel) {
+    if (!inlineCss[rel]) throw new Error(`Unknown stylesheet: ${rel}`);
+    return inlineCss[rel].replace(/<\/style/gi, '<\\/style');
 }
 
 function asset(rel) {
@@ -75,7 +83,7 @@ function asset(rel) {
 function picture(base, { widths, width, height, sizes, alt, eager = false }) {
     const srcset = type => widths.map(w => `${asset(`img/${base}-${w}.${type}`)} ${w}w`).join(', ');
     const largest = widths[widths.length - 1];
-    const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"';
+    const loading = eager ? 'fetchpriority="high"' : 'loading="lazy" fetchpriority="low"';
     return `<picture>
                         <source type="image/webp" srcset="${srcset('webp')}" sizes="${sizes}">
                         <img src="${asset(`img/${base}-${largest}.jpg`)}" srcset="${srcset('jpg')}" sizes="${sizes}" width="${width}" height="${height}" alt="${attr(alt)}" ${loading} decoding="async">
@@ -89,12 +97,12 @@ const pages = [
     { lang: ruLang, alt: enLang, c: content.ru, out: 'ru/index.html' },
 ];
 for (const p of pages) {
-    const html = renderPage({ ...p, site, asset, picture });
+    const html = renderPage({ ...p, site, asset, picture, styles });
     if (html.includes(EM_DASH)) throw new Error(`${p.out} contains an em dash`);
     mkdirSync(dirname(join(dist, p.out)), { recursive: true });
     writeFileSync(join(dist, p.out), html);
 }
-writeFileSync(join(dist, '404.html'), render404({ en: content.en, ru: content.ru, asset }));
+writeFileSync(join(dist, '404.html'), render404({ en: content.en, ru: content.ru, asset, styles }));
 
 // 4. sitemap and robots
 const today = new Date().toISOString().slice(0, 10);
@@ -112,7 +120,7 @@ ${alternates}
 </urlset>
 `);
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *
-Disallow: /api/
+Disallow:
 
 Sitemap: ${site.domain}/sitemap.xml
 `);

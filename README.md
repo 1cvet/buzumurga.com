@@ -33,7 +33,7 @@ npm install && npm run check   # HTML validation + link check (what CI runs)
 - **New CV:** edit `cv/Buzumurga_Mikhail.docx`, export to PDF
   (`soffice --headless --convert-to pdf cv/Buzumurga_Mikhail.docx --outdir static/`), keep the file name.
 - **Show the Kypito block:** set `"SHOW_KYPITO": true` in `content/site.json`.
-- **Fonts:** Montserrat / Libre Baskerville files have no Cyrillic, so the RU page uses system fonts.
-  Add Cyrillic `.woff2` files to `static/assets/fonts/` and `@font-face` rules to use Montserrat there too.
+- **Fonts:** Montserrat (latin + cyrillic subsets, from @fontsource) and Libre Baskerville;
+  Russian italics fall back to Lora via `unicode-range`. Licenses (SIL OFL) are in `licenses/`.
 
 `geron.py` is an unrelated Python exercise kept from the original repository.
