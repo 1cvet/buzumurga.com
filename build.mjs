@@ -83,7 +83,7 @@ function asset(rel) {
 function picture(base, { widths, width, height, sizes, alt, eager = false }) {
     const srcset = type => widths.map(w => `${asset(`img/${base}-${w}.${type}`)} ${w}w`).join(', ');
     const largest = widths[widths.length - 1];
-    const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"';
+    const loading = eager ? 'fetchpriority="high"' : 'loading="lazy" fetchpriority="low"';
     return `<picture>
                         <source type="image/webp" srcset="${srcset('webp')}" sizes="${sizes}">
                         <img src="${asset(`img/${base}-${largest}.jpg`)}" srcset="${srcset('jpg')}" sizes="${sizes}" width="${width}" height="${height}" alt="${attr(alt)}" ${loading} decoding="async">
