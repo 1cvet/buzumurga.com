@@ -9,6 +9,7 @@ import { dirname, extname, join, posix, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderPage } from './src/page.mjs';
 import { render404 } from './src/404.mjs';
+import { renderFreelance } from './src/freelance.mjs';
 import { attr } from './src/helpers.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -90,6 +91,27 @@ function picture(base, { widths, width, height, sizes, alt, eager = false }) {
                     </picture>`;
 }
 
+// Media of the freelance page (covers and screen recordings) are downloaded once with
+// scripts/fetch-freelance-media.sh; stop with a clear message if any file is missing.
+const missingMedia = [];
+for (const c of Object.values(content)) {
+    const f = c.freelance;
+    if (!f) continue;
+    for (const p of [...f.recent, ...f.early, ...f.also]) {
+        if (p.cover && !['webp', 'jpg', 'png'].some(ext => assetMap[`img/work/${p.cover}.${ext}`])) missingMedia.push(`img/work/${p.cover}.(webp|jpg|png)`);
+        for (const v of p.videos || []) if (!assetMap[`video/${v.file}`]) missingMedia.push(`video/${v.file}`);
+    }
+}
+if (missingMedia.length) {
+    throw new Error(`Missing media in static/assets/ (run scripts/fetch-freelance-media.sh):\n  ${[...new Set(missingMedia)].join('\n  ')}`);
+}
+
+// First existing variant of an image: img/work/name -> .webp, .jpg or .png
+function findAsset(base) {
+    for (const ext of ['webp', 'jpg', 'png']) if (assetMap[`${base}.${ext}`]) return assetMap[`${base}.${ext}`];
+    throw new Error(`Unknown asset: ${base}.(webp|jpg|png)`);
+}
+
 // 3. pages
 const [enLang, ruLang] = site.languages;
 const pages = [
@@ -102,21 +124,30 @@ for (const p of pages) {
     mkdirSync(dirname(join(dist, p.out)), { recursive: true });
     writeFileSync(join(dist, p.out), html);
 }
+for (const p of pages) {
+    if (!p.c.freelance) continue;
+    const out = p.out.replace(/index\.html$/, 'freelance/index.html');
+    const html = renderFreelance({ ...p, site, asset, findAsset, picture, styles });
+    if (html.includes(EM_DASH)) throw new Error(`${out} contains an em dash`);
+    mkdirSync(dirname(join(dist, out)), { recursive: true });
+    writeFileSync(join(dist, out), html);
+}
 writeFileSync(join(dist, '404.html'), render404({ en: content.en, ru: content.ru, asset, styles }));
 
 // 4. sitemap and robots
 const today = new Date().toISOString().slice(0, 10);
-const alternates = site.languages
-    .map(l => `        <xhtml:link rel="alternate" hreflang="${l.code}" href="${site.domain}${l.path}"/>`)
-    .concat(`        <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}/"/>`)
+const sitemapPages = ['', 'freelance/'];
+const alternates = sub => site.languages
+    .map(l => `        <xhtml:link rel="alternate" hreflang="${l.code}" href="${site.domain}${l.path}${sub}"/>`)
+    .concat(`        <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}/${sub}"/>`)
     .join('\n');
 writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${site.languages.map(l => `    <url>
-        <loc>${site.domain}${l.path}</loc>
+${sitemapPages.flatMap(sub => site.languages.map(l => `    <url>
+        <loc>${site.domain}${l.path}${sub}</loc>
         <lastmod>${today}</lastmod>
-${alternates}
-    </url>`).join('\n')}
+${alternates(sub)}
+    </url>`)).join('\n')}
 </urlset>
 `);
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *

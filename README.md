@@ -11,13 +11,15 @@ Static pages built from one template and two content files.
 | `content/site.json` | Shared settings: email, LinkedIn, Metrica id, `SHOW_KYPITO` flag |
 | `src/page.mjs` | The page template (one for both languages) |
 | `src/404.mjs` | Bilingual 404 page |
+| `src/freelance.mjs` | `/freelance/` and `/ru/freelance/`: freelance web work (texts in `content/*.json` → `freelance`) |
+| `scripts/fetch-freelance-media.sh` | Downloads covers and screen recordings for `/freelance/` into `static/assets/` (once) |
 | `static/` | Files copied as is; `static/assets/` gets fingerprinted file names |
 | `build.mjs` | Build script, no dependencies: `node build.mjs` -> `dist/` |
 | `scripts/check.mjs` | Internal links, anchors, no em dashes; `--external` checks outside links |
 | `scripts/serve.mjs` | Local preview with production-like headers |
 | `scripts/og.mjs` | Regenerates `static/og-en.jpg` and `static/og-ru.jpg` (needs Playwright) |
 | `cv/Buzumurga_Mikhail.docx` | CV source (not published); export to `static/Buzumurga_Mikhail.pdf` |
-| `deploy/` | Nginx configs, server audit script, server setup guide (`deploy/SERVER.md`) |
+| `deploy/` | Nginx configs, server audit script, server setup guide (`deploy/SERVER.md`), xfluxdev.com move (`deploy/XFLUXDEV.md`) |
 | `.github/workflows/deploy.yml` | Build and checks on every PR; rsync deploy to the VPS on `master` |
 
 ## Everyday tasks

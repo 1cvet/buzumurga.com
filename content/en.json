@@ -300,21 +300,19 @@
                     "href": "https://christicrazycake.com/",
                     "label": "christicrazycake.com"
                 }
-            },
-            {
-                "title": "MYIDEM events calendar",
-                "text": "Events calendar for MYIDEM, an online journal about Moscow events, built under tight deadlines as project manager and business analyst. The project is now closed.",
-                "image": {
-                    "base": "myidem",
-                    "width": 640,
-                    "height": 640,
-                    "alt": "MYIDEM events calendar: a grid of event posters grouped by date"
-                }
             }
         ],
         "kypito": {
             "title": "Kypito - founder",
             "text": "Marketplace Telegram Mini App for Russian-speaking expats in the UAE: ~3,000 users, RU/EN, personalised subscriptions, map and swipe modes."
+        },
+        "sideMore": {
+            "title": "All freelance work",
+            "text": "10 sites and pages since 2017: from WordPress landing pages for small businesses in Russia to recent projects in the UAE and Switzerland, with screen recordings of the sites that are no longer online.",
+            "link": {
+                "href": "/freelance/",
+                "label": "See all projects"
+            }
         }
     },
     "education": {
@@ -449,5 +447,234 @@
         "locationLabel": "Location",
         "location": "Dubai, UAE",
         "linkedinLabel": "LinkedIn"
+    },
+    "freelance": {
+        "meta": {
+            "title": "Freelance web work - Mikhail Buzumurga",
+            "description": "Websites Mikhail Buzumurga designed and built alongside his corporate career, 2017-2025: from WordPress landing pages for small businesses to sites for clients in the UAE and Switzerland.",
+            "ogDescription": "Websites I designed and built alongside my corporate career, 2017-2025."
+        },
+        "eyebrow": "Side projects · 2017-2025",
+        "heading": "Freelance *web* work.",
+        "intro": "Alongside my corporate career I have always built websites for small businesses. It started in 2017 as Extra Flow, a one-person studio: I talked to clients, designed the pages, built them on WordPress and set up analytics and SEO. Today I still take on the occasional project for people I know. The early work is simple by today's standards, but it is where I learned to ship a site end to end.",
+        "back": "Back to the main page",
+        "stats": [
+            {
+                "value": "10",
+                "label": "sites and pages shipped"
+            },
+            {
+                "value": "9",
+                "label": "years, alongside a day job"
+            },
+            {
+                "value": "3",
+                "label": "countries: Russia, UAE, Switzerland"
+            },
+            {
+                "value": "5",
+                "label": "still live today"
+            }
+        ],
+        "recentEyebrow": "Recent",
+        "recentHeading": "2024-2025.",
+        "earlyEyebrow": "Extra Flow · 2017-2021",
+        "earlyHeading": "Where it started.",
+        "youtube": "Screen recordings of these sites are also archived on the [Extra Flow YouTube channel](https://www.youtube.com/@extraflow4278).",
+        "alsoHeading": "Also built",
+        "live": "Live",
+        "closed": "Closed",
+        "watch": "Watch",
+        "close": "Close",
+        "missing": "This recording is not available.",
+        "lessonsEyebrow": "Why it still matters",
+        "lessonsHeading": "What it taught me.",
+        "lessons": [
+            {
+                "title": "The whole chain",
+                "text": "Brief, design, build, launch, analytics, SEO. Doing every step myself is why I can write requirements engineers can build from today."
+            },
+            {
+                "title": "Sites exist to sell",
+                "text": "Small business owners judge a site by calls and orders, not by looks. That lens carried straight into D2C eCommerce."
+            },
+            {
+                "title": "Things that last",
+                "text": "Several of these sites are still running years later with little maintenance. Simple, well-structured builds age well."
+            }
+        ],
+        "recent": [
+            {
+                "id": "cardinals",
+                "title": "Cardinals",
+                "year": "2024",
+                "domain": "cardinals.law",
+                "live": true,
+                "href": "https://cardinals.law/",
+                "meta": "Legal advisory · Dubai",
+                "text": "Corporate site for a cross-border legal advisory: practice pages, team profiles, jurisdiction coverage, insights and events, and a consultation request flow. English and Russian versions.",
+                "tags": [
+                    "Design",
+                    "Development",
+                    "EN / RU",
+                    "Lead forms"
+                ],
+                "alt": "Website of a cross-border legal advisory",
+                "cover": "cardinals"
+            },
+            {
+                "id": "christi",
+                "title": "Christicrazycake",
+                "year": "2024-2025",
+                "domain": "christicrazycake.com",
+                "live": true,
+                "href": "https://christicrazycake.com/",
+                "meta": "Cake studio · Horgen, Switzerland",
+                "text": "Site for a custom cake studio: the founder's story, pricing, a large gallery, traditional and vegan flavour menus, and ordering via WhatsApp.",
+                "tags": [
+                    "Design",
+                    "WordPress",
+                    "Gallery",
+                    "WhatsApp orders"
+                ],
+                "alt": "Website of a custom cake studio",
+                "cover": "christicrazycake"
+            }
+        ],
+        "early": [
+            {
+                "id": "prodaykv23",
+                "title": "Prodaykv23",
+                "year": "2018",
+                "domain": "prodaykv23.ru",
+                "live": true,
+                "href": "https://prodaykv23.ru/",
+                "meta": "Real estate · Krasnodar",
+                "text": "Lead-generation site for a company that buys apartments and other property for cash: service pages per property type, a quote form and a callback widget. Later grew into a multi-page site with local SEO for Krasnodar and Maykop.",
+                "tags": [
+                    "Design",
+                    "WordPress",
+                    "SEO",
+                    "Promotion"
+                ],
+                "alt": "Real estate buyout website",
+                "cover": "prodaykv23",
+                "videos": [
+                    {
+                        "file": "prodaykv2.mp4",
+                        "label": "Desktop"
+                    },
+                    {
+                        "file": "prodaykv3.mp4",
+                        "label": "Mobile"
+                    }
+                ]
+            },
+            {
+                "id": "myidem",
+                "title": "MYIDEM calendar & rate card",
+                "year": "2019",
+                "domain": "myidem.moscow",
+                "live": false,
+                "meta": "Media · Moscow",
+                "text": "Two builds for MYIDEM, a well-known Moscow nightlife media brand: an events calendar the editors filled from the admin panel, and an advertising rate card page. Designed and developed myself, on tight deadlines.",
+                "tags": [
+                    "Custom WordPress",
+                    "Admin workflow",
+                    "Rate card"
+                ],
+                "alt": "MYIDEM events calendar: a grid of event posters grouped by date",
+                "picture": "myidem",
+                "videos": [
+                    {
+                        "file": "myidem-kalendar-2.mp4",
+                        "label": "Calendar · desktop"
+                    },
+                    {
+                        "file": "myidem-kalendar-3.mp4",
+                        "label": "Calendar · mobile"
+                    },
+                    {
+                        "file": "myidem-prajs-list.mp4",
+                        "label": "Rate card"
+                    }
+                ]
+            }
+        ],
+        "also": [
+            {
+                "id": "narlounge",
+                "title": "Nar Lounge",
+                "year": "2017",
+                "domain": "narlounge.ru",
+                "live": false,
+                "place": "Saint Petersburg",
+                "text": "Landing page for a food bar and lounge",
+                "videos": [
+                    {
+                        "file": "nar-lounge-2.mp4",
+                        "label": "Desktop"
+                    },
+                    {
+                        "file": "nar-lounge-3.mp4",
+                        "label": "Mobile"
+                    }
+                ]
+            },
+            {
+                "id": "praktika26",
+                "title": "Praktika26",
+                "year": "2019",
+                "domain": "praktika26.ru",
+                "live": false,
+                "place": "Pyatigorsk",
+                "text": "Landing page for a refrigeration service company"
+            },
+            {
+                "id": "paradise",
+                "title": "Paradise Cloud",
+                "year": "2019",
+                "domain": "paradisecloud.ru",
+                "live": false,
+                "place": "Saint Petersburg",
+                "text": "Landing page for a hookah catering service",
+                "videos": [
+                    {
+                        "file": "paradise-cloud-2.mp4",
+                        "label": "Desktop"
+                    },
+                    {
+                        "file": "paradise-cloud-3.mp4",
+                        "label": "Mobile"
+                    }
+                ]
+            },
+            {
+                "id": "mishacvet",
+                "title": "Misha Cvet",
+                "year": "2019",
+                "domain": "mishacvet.com",
+                "live": true,
+                "href": "https://mishacvet.com/",
+                "place": "",
+                "text": "Portfolio and online shop for a contemporary artist",
+                "videos": [
+                    {
+                        "file": "misha-cvet-2.mp4",
+                        "label": "Earlier version"
+                    }
+                ]
+            },
+            {
+                "id": "netklopov",
+                "title": "Net Klopov",
+                "year": "2021",
+                "domain": "net-klopov.ru",
+                "live": true,
+                "href": "https://net-klopov.ru/",
+                "place": "Moscow",
+                "text": "Lead-generation site for a pest control company"
+            }
+        ]
     }
 }
