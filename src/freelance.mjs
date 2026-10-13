@@ -1,7 +1,6 @@
 // "Freelance web work" page: websites built alongside the corporate career (2017-2025).
 // One template for both languages; texts live in content/*.json under "freelance".
-// Covers live in static/assets/img/work/, screen recordings in static/assets/video/
-// (both are downloaded once by scripts/fetch-freelance-media.sh).
+// Covers live in static/assets/img/work/ (rendered by scripts/covers.mjs), screen recordings in static/assets/video/.
 import { esc, md, attr, ext } from './helpers.mjs';
 
 export function renderFreelance({ c, site, lang, alt, asset, findAsset, picture, styles }) {

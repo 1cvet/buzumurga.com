@@ -91,8 +91,8 @@ function picture(base, { widths, width, height, sizes, alt, eager = false }) {
                     </picture>`;
 }
 
-// Media of the freelance page (covers and screen recordings) are downloaded once with
-// scripts/fetch-freelance-media.sh; stop with a clear message if any file is missing.
+// Media of the freelance page live in git: covers are rendered by scripts/covers.mjs,
+// screen recordings were saved from the old Extra Flow site. Stop with a clear message if any file is missing.
 const missingMedia = [];
 for (const c of Object.values(content)) {
     const f = c.freelance;
@@ -103,7 +103,7 @@ for (const c of Object.values(content)) {
     }
 }
 if (missingMedia.length) {
-    throw new Error(`Missing media in static/assets/ (run scripts/fetch-freelance-media.sh):\n  ${[...new Set(missingMedia)].join('\n  ')}`);
+    throw new Error(`Missing media in static/assets/ (covers: node scripts/covers.mjs):\n  ${[...new Set(missingMedia)].join('\n  ')}`);
 }
 
 // First existing variant of an image: img/work/name -> .webp, .jpg or .png

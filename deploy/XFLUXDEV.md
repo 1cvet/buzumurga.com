@@ -1,5 +1,8 @@
 # Переезд xfluxdev.com (Extra Flow) на buzumurga.com/freelance/
 
+> Выполнено 13.10.2026: xfluxdev.com отдаёт 301 на /ru/freelance/, старый WordPress удалён с сервера (бэкап в `/root/backups`).
+> Скрипт `fetch-freelance-media.sh` удалён: медиа уже в git, обложки рендерит `scripts/covers.mjs`.
+
 Инструкция для Claude Code на сервере. Выполнять по порядку, после каждого этапа коротко отчитываться.
 Общие правила сервера из `deploy/SERVER.md` действуют и здесь: Kypito и чужие конфиги не трогать,
 перед `systemctl reload nginx` всегда бэкап `/etc/nginx` и `nginx -t`.
