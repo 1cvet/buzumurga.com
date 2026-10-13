@@ -11,6 +11,7 @@ Static pages built from one template and two content files.
 | `content/site.json` | Shared settings: email, LinkedIn, Metrica id, `SHOW_KYPITO` flag |
 | `src/page.mjs` | The page template (one for both languages) |
 | `src/404.mjs` | Bilingual 404 page |
+| `src/case.mjs` | `/work/ploom/` and `/ru/work/ploom/`: Ploom.ae case study (texts in `content/*.json` → `ploomCase`, quotes reused from `testimonials`) |
 | `src/freelance.mjs` | `/freelance/` and `/ru/freelance/`: freelance web work (texts in `content/*.json` → `freelance`) |
 | `scripts/covers.mjs` | Renders the `/freelance/` project covers in one style (site in a browser window); dev-only, needs Playwright |
 | `static/` | Files copied as is; `static/assets/` gets fingerprinted file names |

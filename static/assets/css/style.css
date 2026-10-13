@@ -336,6 +336,46 @@ button { font: inherit; }
 .card__img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
 
 .cards--side { align-items: start; }
+.cards--two { grid-template-columns: repeat(2, 1fr); }
+.featured__links { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 8px; }
+.featured__links .card__link { margin: 0; padding: 0; color: var(--dark-text); }
+.featured__links .card__link:hover { color: var(--dark-accent); }
+.featured__case { background: var(--dark-accent); border-color: var(--dark-accent); color: #160707; }
+.featured__case:hover { background: var(--dark-text); border-color: var(--dark-text); color: var(--dark-bg); }
+
+/* compact list of early IT projects */
+.foundation { border-top: 1px solid var(--line); }
+.foundation li { display: grid; grid-template-columns: 180px minmax(0, 1fr) auto; gap: 4px 20px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.foundation strong { font-weight: 700; }
+.foundation span { color: var(--muted); font-size: .95rem; }
+.foundation .card__link { margin: 0; padding: 0; font-size: .88rem; }
+.side-note { margin: 40px 0 0; padding: 22px 26px; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--muted); }
+.side-note__link { font-weight: 600; white-space: nowrap; text-decoration: none; }
+
+/* case study page */
+.case-meta { margin: 16px 0 0; font-size: .95rem; font-weight: 600; color: var(--muted); }
+.case-h2 em, .case-h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.case-h2 em { color: var(--accent); }
+.case-parties { margin-top: 24px; }
+.case-card__title { font-size: 1.12rem; font-weight: 700; }
+.card .case-card__title + p { margin-top: 10px; }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; counter-reset: flow; }
+.flow__step { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.flow__step:not(:last-child)::after { content: "\2192"; position: absolute; top: 50%; right: -24px; transform: translateY(-50%); font-weight: 700; color: var(--accent); }
+.flow__label { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.flow__step strong { font-size: 1.08rem; font-weight: 800; }
+.flow__note { font-size: .88rem; color: var(--muted); }
+.checks { display: grid; gap: 14px; }
+.checks li { position: relative; padding-left: 30px; }
+.checks li::before { content: ""; position: absolute; left: 2px; top: .5em; width: 12px; height: 7px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+.case-note { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: .92rem; color: var(--muted); }
+.case-result { max-width: 760px; color: var(--text); }
+.case-cta { margin-top: 40px; align-items: center; }
+.case-cta .card__link { margin: 0 0 0 8px; padding: 0; }
+.own-product { max-width: 760px; }
+.own-product h3 { font-size: 1.3rem; }
+.own-product h3 + p { margin-top: 10px; }
+.section--tight { padding-top: clamp(56px, 7vw, 88px); }
 .kypito { margin-top: 20px; padding: 28px; border: 1px dashed var(--line); border-radius: var(--radius); }
 .kypito h3 { margin-bottom: 10px; }
 .kypito p { margin: 0; color: var(--muted); }
@@ -535,6 +575,11 @@ a.work-link::after { content: " \2197"; }
     .hero__photo { order: -1; width: 180px; }
     .grid-2, .grid-about, .featured, .notfound__cols { grid-template-columns: 1fr; }
     .featured .card__link { grid-column: 1; }
+    .featured__links { grid-column: 1; }
+    .flow { grid-template-columns: 1fr; gap: 30px; }
+    .flow__step:not(:last-child)::after { content: "\2193"; top: auto; right: auto; bottom: -26px; left: 28px; transform: none; }
+    .foundation li { grid-template-columns: 150px minmax(0, 1fr); }
+    .foundation .card__link { grid-column: 2; }
     .about__media { max-width: 420px; }
     .stats { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
     .job { grid-template-columns: 1fr; gap: 10px; }
@@ -556,6 +601,10 @@ a.work-link::after { content: " \2197"; }
     .facts div, .contacts li, .edu li { grid-template-columns: 1fr; gap: 4px; }
     .hero__cta .btn { flex: 1 1 100%; }
     .footer__inner { flex-direction: column; text-align: center; }
+    .foundation li { grid-template-columns: 1fr; }
+    .foundation .card__link { grid-column: 1; }
+    .side-note { padding: 18px 20px; }
+    .case-cta .card__link { margin: 4px 0 0; }
 }
 
 @media (max-width: 380px) {

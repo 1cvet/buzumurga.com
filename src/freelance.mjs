@@ -153,7 +153,21 @@ ${f.recent.map(card).join('\n')}
             </div>
         </section>
 
-        <section class="section" id="extra-flow">
+${f.ownProduct ? `        <section class="section section--tight" id="own-product">
+            <div class="container">
+                <div class="section__head reveal">
+                    <p class="eyebrow">${esc(f.ownProduct.eyebrow)}</p>
+                    <h2>${esc(f.ownProduct.heading)}</h2>
+                </div>
+                <article class="card own-product reveal">
+                    <p class="work-card__meta"><span>${esc(f.ownProduct.meta)}</span></p>
+                    <h3>${esc(f.ownProduct.title)}</h3>
+                    <p>${md(f.ownProduct.text)}</p>
+                </article>
+            </div>
+        </section>
+
+` : ''}        <section class="section${f.ownProduct ? ' section--alt' : ''}" id="extra-flow">
             <div class="container">
                 <div class="section__head reveal">
                     <p class="eyebrow">${esc(f.earlyEyebrow)}</p>
@@ -170,7 +184,7 @@ ${f.also.map(row).join('\n')}
             </div>
         </section>
 
-        <section class="section section--alt" id="lessons">
+        <section class="section${f.ownProduct ? '' : ' section--alt'}" id="lessons">
             <div class="container">
                 <div class="section__head reveal">
                     <p class="eyebrow">${esc(f.lessonsEyebrow)}</p>
