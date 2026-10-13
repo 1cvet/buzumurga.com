@@ -2,6 +2,7 @@
 
 Personal website of Mikhail Buzumurga: <https://buzumurga.com/> (EN) and <https://buzumurga.com/ru/> (RU).
 Static pages built from one template and two content files.
+What changed and why: [HISTORY.md](HISTORY.md).
 
 ## Structure
 
