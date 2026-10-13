@@ -231,7 +231,12 @@ ${c.work.side.map(p => `                    <article class="card card--side reve
                         <h4>${esc(p.title)}</h4>
                         <p>${md(p.text)}</p>${p.link ? `
                         <a class="card__link" href="${attr(p.link.href)}"${ext}>${esc(p.link.label)}</a>` : ''}
-                    </article>`).join('\n')}
+                    </article>`).join('\n')}${c.work.sideMore ? `
+                    <article class="card card--side card--more reveal">
+                        <h4>${esc(c.work.sideMore.title)}</h4>
+                        <p>${md(c.work.sideMore.text)}</p>
+                        <a class="card__link card__link--internal" href="${attr(c.work.sideMore.link.href)}">${esc(c.work.sideMore.link.label)} &rarr;</a>
+                    </article>` : ''}
                 </div>
 ${site.SHOW_KYPITO ? `
                 <article class="kypito reveal">
