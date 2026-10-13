@@ -12,7 +12,7 @@ Static pages built from one template and two content files.
 | `src/page.mjs` | The page template (one for both languages) |
 | `src/404.mjs` | Bilingual 404 page |
 | `src/freelance.mjs` | `/freelance/` and `/ru/freelance/`: freelance web work (texts in `content/*.json` → `freelance`) |
-| `scripts/fetch-freelance-media.sh` | Downloads covers and screen recordings for `/freelance/` into `static/assets/` (once) |
+| `scripts/covers.mjs` | Renders the `/freelance/` project covers in one style (site in a browser window); dev-only, needs Playwright |
 | `static/` | Files copied as is; `static/assets/` gets fingerprinted file names |
 | `build.mjs` | Build script, no dependencies: `node build.mjs` -> `dist/` |
 | `scripts/check.mjs` | Internal links, anchors, no em dashes; `--external` checks outside links |

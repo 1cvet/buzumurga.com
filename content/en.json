@@ -584,7 +584,7 @@
                     "Rate card"
                 ],
                 "alt": "MYIDEM events calendar: a grid of event posters grouped by date",
-                "picture": "myidem",
+                "cover": "myidem",
                 "videos": [
                     {
                         "file": "myidem-kalendar-2.mp4",
