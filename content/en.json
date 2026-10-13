@@ -79,15 +79,18 @@
                 "name": "eCommerce",
                 "items": [
                     "Adobe Commerce / Magento",
-                    "OMS integrations",
-                    "WordPress"
+                    "OMS design & integrations",
+                    "Payments & BNPL (HyperPay, Tabby)",
+                    "WordPress",
+                    "Telegram Mini Apps"
                 ]
             },
             {
                 "name": "Growth",
                 "items": [
-                    "CRM",
-                    "Paid media",
+                    "CRM: email, SMS, WhatsApp",
+                    "Paid media: programmatic, Meta",
+                    "Telegram Ads",
                     "SEO",
                     "GEO / AI visibility"
                 ]
@@ -97,20 +100,25 @@
                 "items": [
                     "Google Analytics",
                     "Yandex Metrica",
-                    "Power BI"
+                    "Power BI",
+                    "Gumshoe (AI visibility)"
                 ]
             },
             {
                 "name": "Delivery",
                 "items": [
                     "Jira",
+                    "Agile",
+                    "Git / GitHub",
                     "GitLab",
                     "Jenkins"
                 ]
             },
             {
-                "name": "Code",
+                "name": "Code & AI",
                 "items": [
+                    "Claude Code",
+                    "React",
                     "PHP",
                     "HTML/CSS",
                     "SQL",
