@@ -87,6 +87,7 @@ ${site.languages.map(l => `    <link rel="alternate" hreflang="${l.code}" href="
 
             <nav class="nav" id="nav" aria-label="${attr(c.ui.mainNav)}">
 ${nav.map(([id, label]) => `                <a href="#${id}">${esc(label)}</a>`).join('\n')}
+                <a class="nav__cv" href="${site.cv}" target="_blank" rel="noopener">${esc(c.ui.downloadCvLong)}</a>
             </nav>
 
             <div class="header__actions">
@@ -127,7 +128,12 @@ ${nav.map(([id, label]) => `                <a href="#${id}">${esc(label)}</a>`)
                     </div>
                 </div>
                 <div class="hero__photo">
-                    ${picture('portrait', { widths: [280, 360, 563], width: 563, height: 751, sizes: '(max-width: 900px) 220px, 360px', alt: c.hero.photoAlt, eager: true })}
+                    <picture>
+                        <source media="(max-width: 900px)" type="image/webp" srcset="${asset('img/portrait-head-208.webp')} 208w, ${asset('img/portrait-head-312.webp')} 312w" sizes="104px">
+                        <source media="(max-width: 900px)" srcset="${asset('img/portrait-head-208.jpg')} 208w, ${asset('img/portrait-head-312.jpg')} 312w" sizes="104px">
+                        <source type="image/webp" srcset="${['280', '360', '563'].map(w => `${asset(`img/portrait-${w}.webp`)} ${w}w`).join(', ')}" sizes="360px">
+                        <img src="${asset('img/portrait-563.jpg')}" srcset="${['280', '360', '563'].map(w => `${asset(`img/portrait-${w}.jpg`)} ${w}w`).join(', ')}" sizes="360px" width="563" height="751" alt="${attr(c.hero.photoAlt)}" fetchpriority="high" decoding="async">
+                    </picture>
                 </div>
             </div>
             <div class="container">
@@ -171,7 +177,11 @@ ${c.about.tools.map(g => `                        <div class="tools__group">
                     <h2>${esc(c.experience.heading)}</h2>
                 </div>
                 <ol class="timeline">
-${c.experience.jobs.map(j => `                    <li class="job reveal">
+${c.experience.jobs.map((j, i) => `${i === c.experience.visible ? `                </ol>
+                <details class="earlier">
+                    <summary>${esc(c.experience.earlier)}</summary>
+                <ol class="timeline timeline--earlier" start="${i + 1}">
+` : ''}                    <li class="job${i < c.experience.visible ? ' reveal' : ''}">
                         <div class="job__meta">
                             <span class="job__date">${esc(j.date)}</span>
                             <span class="job__place">${esc(j.place)}</span>
@@ -190,7 +200,8 @@ ${j.more.map(b => `                                    <li>${md(b)}</li>`).join(
                             </details>` : ''}
                         </div>
                     </li>`).join('\n')}
-                </ol>
+                </ol>${c.experience.visible < c.experience.jobs.length ? `
+                </details>` : ''}
             </div>
         </section>
 

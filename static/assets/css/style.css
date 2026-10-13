@@ -293,6 +293,20 @@ button { font: inherit; }
 .job li::before { content: ""; position: absolute; left: 0; top: .8em; width: 10px; height: 2px; background: var(--accent); }
 .job li a { color: var(--text); }
 
+.earlier { border-bottom: 1px solid var(--line); }
+.earlier > summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    min-height: 64px; padding: 18px 0; cursor: pointer; list-style: none;
+    font-weight: 600; color: var(--muted); transition: color .2s;
+}
+.earlier > summary::-webkit-details-marker { display: none; }
+.earlier > summary::after { content: "+"; flex: none; font-size: 1.4rem; line-height: 1; color: var(--accent); transition: transform .2s; }
+.earlier > summary:hover { color: var(--text); }
+.earlier[open] > summary::after { transform: rotate(45deg); }
+.timeline--earlier { border-top: 0; }
+.timeline--earlier .job:last-child { border-bottom: 0; }
+.nav__cv { display: none; }
+
 .more { margin-top: 14px; }
 .more summary, .certs__more summary {
     display: inline-flex; align-items: center; gap: 8px;
@@ -308,6 +322,7 @@ button { font: inherit; }
     display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px 48px;
     padding: clamp(28px, 4vw, 48px);
     background: var(--dark-bg); color: var(--dark-text); border-radius: 20px;
+    border: 1px solid color-mix(in srgb, var(--dark-text) 12%, var(--dark-bg));
 }
 .featured__label { display: inline-block; margin-bottom: 16px; font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--dark-accent); }
 .featured h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; letter-spacing: -.025em; }
@@ -565,6 +580,7 @@ a.work-link::after { content: " \2197"; }
     .nav.is-open { transform: none; opacity: 1; visibility: visible; }
     .nav a { padding: 14px 0; font-size: 1.1rem; color: var(--text); border-bottom: 1px solid var(--line); }
     .nav a:last-child { border-bottom: 0; }
+    .nav .nav__cv { display: block; margin-top: 12px; padding: 14px 20px; border: 0; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-align: center; }
     .menu-toggle { display: inline-grid; }
     .logo__name { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
 }
@@ -572,7 +588,8 @@ a.work-link::after { content: " \2197"; }
 @media (max-width: 900px) {
     .certs__title { padding-top: 0; }
     .hero__inner { grid-template-columns: 1fr; }
-    .hero__photo { order: -1; width: 180px; }
+    .hero__photo { order: -1; width: 104px; }
+    .hero__photo img { aspect-ratio: 1; border-radius: 50%; object-position: 50% 40%; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line); }
     .grid-2, .grid-about, .featured, .notfound__cols { grid-template-columns: 1fr; }
     .featured .card__link { grid-column: 1; }
     .featured__links { grid-column: 1; }
@@ -581,6 +598,7 @@ a.work-link::after { content: " \2197"; }
     .foundation li { grid-template-columns: 150px minmax(0, 1fr); }
     .foundation .card__link { grid-column: 2; }
     .about__media { max-width: 420px; }
+    .about__media img { aspect-ratio: 4 / 3; object-position: 50% 30%; }
     .stats { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
     .job { grid-template-columns: 1fr; gap: 10px; }
     .job__meta { flex-direction: row; gap: 12px; }
@@ -603,6 +621,15 @@ a.work-link::after { content: " \2197"; }
     .footer__inner { flex-direction: column; text-align: center; }
     .foundation li { grid-template-columns: 1fr; }
     .foundation .card__link { grid-column: 1; }
+    .tools__grid { grid-template-columns: 1fr; gap: 20px; }
+    .tools__group .chips { flex-direction: row; }
+    /* comfortable tap targets for small text links */
+    .more summary { padding: 10px 0; }
+    .card__link, .side-note__link, .footer__top, .quotes__actions .card__link { display: inline-block; padding-top: 10px; padding-bottom: 10px; }
+    .job li a { display: inline-block; padding: 4px 0; }
+    .featured__links .card__link, .foundation .card__link { padding: 10px 0; }
+    .contacts a { display: inline-block; padding: 8px 0; }
+    .chip-btn { min-height: 40px; padding-left: 16px; padding-right: 16px; }
     .side-note { padding: 18px 20px; }
     .case-cta .card__link { margin: 4px 0 0; }
 }
