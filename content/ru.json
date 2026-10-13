@@ -79,15 +79,18 @@
                 "name": "eCommerce",
                 "items": [
                     "Adobe Commerce / Magento",
-                    "интеграции с OMS",
-                    "WordPress"
+                    "проектирование OMS и интеграции",
+                    "оплата и рассрочка (HyperPay, Tabby)",
+                    "WordPress",
+                    "Telegram Mini Apps"
                 ]
             },
             {
                 "name": "Рост",
                 "items": [
-                    "CRM",
-                    "платный трафик",
+                    "CRM: email, SMS, WhatsApp",
+                    "платный трафик: programmatic, Meta",
+                    "Telegram Ads",
                     "SEO",
                     "GEO / видимость в AI"
                 ]
@@ -97,20 +100,25 @@
                 "items": [
                     "Google Analytics",
                     "Яндекс Метрика",
-                    "Power BI"
+                    "Power BI",
+                    "Gumshoe (видимость в AI)"
                 ]
             },
             {
                 "name": "Delivery",
                 "items": [
                     "Jira",
+                    "Agile",
+                    "Git / GitHub",
                     "GitLab",
                     "Jenkins"
                 ]
             },
             {
-                "name": "Код",
+                "name": "Код и AI",
                 "items": [
+                    "Claude Code",
+                    "React",
                     "PHP",
                     "HTML/CSS",
                     "SQL",
