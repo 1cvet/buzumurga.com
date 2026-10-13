@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { renderPage } from './src/page.mjs';
 import { render404 } from './src/404.mjs';
 import { renderFreelance } from './src/freelance.mjs';
+import { renderCase, CASE_PATH } from './src/case.mjs';
 import { attr } from './src/helpers.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -132,11 +133,19 @@ for (const p of pages) {
     mkdirSync(dirname(join(dist, out)), { recursive: true });
     writeFileSync(join(dist, out), html);
 }
+for (const p of pages) {
+    if (!p.c.ploomCase) continue;
+    const out = p.out.replace(/index\.html$/, `${CASE_PATH}index.html`);
+    const html = renderCase({ ...p, site, asset, styles });
+    if (html.includes(EM_DASH)) throw new Error(`${out} contains an em dash`);
+    mkdirSync(dirname(join(dist, out)), { recursive: true });
+    writeFileSync(join(dist, out), html);
+}
 writeFileSync(join(dist, '404.html'), render404({ en: content.en, ru: content.ru, asset, styles }));
 
 // 4. sitemap and robots
 const today = new Date().toISOString().slice(0, 10);
-const sitemapPages = ['', 'freelance/'];
+const sitemapPages = ['', CASE_PATH, 'freelance/'];
 const alternates = sub => site.languages
     .map(l => `        <xhtml:link rel="alternate" hreflang="${l.code}" href="${site.domain}${l.path}${sub}"/>`)
     .concat(`        <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}/${sub}"/>`)

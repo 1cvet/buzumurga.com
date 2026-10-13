@@ -210,11 +210,14 @@ ${j.more.map(b => `                                    <li>${md(b)}</li>`).join(
                     <ul class="featured__list">
 ${c.work.featured.bullets.map(b => `                        <li>${md(b)}</li>`).join('\n')}
                     </ul>
-                    <a class="card__link" href="${attr(c.work.featured.link.href)}"${ext}>${esc(c.work.featured.link.label)}</a>
+                    <div class="featured__links">
+                        <a class="btn btn--solid featured__case" href="${attr(c.work.featured.caseLink.href)}">${esc(c.work.featured.caseLink.label)} &rarr;</a>
+                        <a class="card__link" href="${attr(c.work.featured.link.href)}"${ext}>${esc(c.work.featured.link.label)}</a>
+                    </div>
                 </article>
 
                 <h3 class="subhead reveal">${esc(c.work.casesHeading)}</h3>
-                <div class="cards">
+                <div class="cards cards--two">
 ${c.work.cases.map((p, i) => `                    <article class="card reveal">
                         <span class="card__num">${String(i + 1).padStart(2, '0')}</span>
                         <h4>${esc(p.title)}</h4>
@@ -224,20 +227,16 @@ ${c.work.cases.map((p, i) => `                    <article class="card reveal">
                     </article>`).join('\n')}
                 </div>
 
-                <h3 class="subhead reveal">${esc(c.work.sideHeading)}</h3>
-                <div class="cards cards--side">
-${c.work.side.map(p => `                    <article class="card card--side reveal">${p.image ? `
-                        <div class="card__img">${picture(p.image.base, { widths: [p.image.width], width: p.image.width, height: p.image.height, sizes: '(max-width: 640px) 100vw, 360px', alt: p.image.alt })}</div>` : ''}
-                        <h4>${esc(p.title)}</h4>
-                        <p>${md(p.text)}</p>${p.link ? `
+                <h3 class="subhead reveal">${esc(c.work.foundationHeading)}</h3>
+                <ul class="foundation reveal">
+${c.work.foundation.map(p => `                    <li>
+                        <strong>${esc(p.title)}</strong>
+                        <span>${esc(p.text)}</span>${p.link ? `
                         <a class="card__link" href="${attr(p.link.href)}"${ext}>${esc(p.link.label)}</a>` : ''}
-                    </article>`).join('\n')}${c.work.sideMore ? `
-                    <article class="card card--side card--more reveal">
-                        <h4>${esc(c.work.sideMore.title)}</h4>
-                        <p>${md(c.work.sideMore.text)}</p>
-                        <a class="card__link card__link--internal" href="${attr(c.work.sideMore.link.href)}">${esc(c.work.sideMore.link.label)} &rarr;</a>
-                    </article>` : ''}
-                </div>
+                    </li>`).join('\n')}
+                </ul>
+
+                <p class="side-note reveal">${md(c.work.sideNote.text)} <a class="side-note__link" href="${attr(c.work.sideNote.link.href)}">${esc(c.work.sideNote.link.label)} &rarr;</a></p>
 ${site.SHOW_KYPITO ? `
                 <article class="kypito reveal">
                     <h3>${esc(c.work.kypito.title)}</h3>
@@ -264,12 +263,6 @@ ${c.education.items.map(e => `                        <li>
                     <h3 class="certs__title">${esc(c.education.certsHeading)}</h3>
                     <ul class="certs">
 ${c.education.certs.map(x => `                        <li><a href="${attr(x.href)}" target="_blank" rel="noopener"><strong>${esc(x.title)}</strong><span>${esc(x.meta)}</span></a></li>`).join('\n')}
-                        <li>
-                            <details class="certs__more">
-                                <summary>${esc(c.education.sololearn.label)}</summary>
-                                <span class="chips chips--links">${c.education.sololearn.items.map(x => `<a href="${attr(x.href)}" target="_blank" rel="noopener">${esc(x.title)}</a>`).join('')}</span>
-                            </details>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -322,12 +315,12 @@ ${c.testimonials.items.map((t, i) => `                    <figure class="quote${
                         </span>
                     </li>
                     <li>
-                        <span class="contacts__label">${esc(c.contact.telegramLabel)}</span>
-                        <a href="${attr(site.telegram)}"${ext}>${esc(site.telegramHandle)}</a>
-                    </li>
-                    <li>
                         <span class="contacts__label">${esc(c.contact.linkedinLabel)}</span>
                         <a href="${attr(site.linkedin)}"${ext}>linkedin.com/in/m-buzumurga</a>
+                    </li>
+                    <li>
+                        <span class="contacts__label">${esc(c.contact.telegramLabel)}</span>
+                        <a href="${attr(site.telegram)}"${ext}>${esc(site.telegramHandle)}</a>
                     </li>
                     <li>
                         <span class="contacts__label">${esc(c.contact.locationLabel)}</span>
