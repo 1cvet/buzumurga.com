@@ -1,7 +1,7 @@
 // "Ploom.ae D2C launch" case study page: /work/ploom/ and /ru/work/ploom/.
 // One template for both languages; texts live in content/*.json under "ploomCase".
 // Quotes are reused from "testimonials" (the ones whose context mentions Ploom).
-import { esc, md, attr, ext, initials } from './helpers.mjs';
+import { esc, md, attr, ext, initials, ICON_LINKS, breadcrumbs } from './helpers.mjs';
 
 export const CASE_PATH = 'work/ploom/';
 
@@ -21,15 +21,23 @@ export function renderCase({ c, site, lang, alt, asset, styles }) {
     ];
     const quotes = c.testimonials.items.filter(t => /ploom/i.test(t.context));
 
+    const headline = k.heading.replace(/\*/g, '');
     const jsonLd = {
         '@context': 'https://schema.org',
-        '@type': 'Article',
-        headline: k.heading.replace(/\*/g, ''),
-        description: k.meta.description,
-        inLanguage: lang.code,
-        url,
-        author: { '@type': 'Person', name: c.hero.name, url: site.domain + '/' },
-        about: { '@type': 'WebSite', name: 'ploom.ae', url: 'https://www.ploom.ae/' },
+        '@graph': [
+            {
+                '@type': 'Article',
+                headline,
+                description: k.meta.description,
+                inLanguage: lang.code,
+                url,
+                mainEntityOfPage: url,
+                image: site.domain + c.meta.ogImage,
+                author: { '@type': 'Person', name: c.hero.name, url: site.domain + '/' },
+                about: { '@type': 'WebSite', name: 'ploom.ae', url: 'https://www.ploom.ae/' },
+            },
+            breadcrumbs([[c.hero.name, site.domain + home], [headline.replace(/\.$/, ''), url]]),
+        ],
     };
 
     return `<!DOCTYPE html>
@@ -56,11 +64,10 @@ ${site.languages.map(l => `    <link rel="alternate" hreflang="${l.code}" href="
     <meta property="og:image" content="${site.domain}${c.meta.ogImage}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="${attr(c.meta.ogImageAlt)}">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+${ICON_LINKS}
 
     <link rel="preload" href="${asset(`fonts/montserrat-${lang.code === 'ru' ? 'cyrillic' : 'latin'}-400-normal.woff2`)}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="${asset('fonts/montserrat-latin-800-normal.woff2')}" as="font" type="font/woff2" crossorigin>

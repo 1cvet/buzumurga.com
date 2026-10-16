@@ -1,5 +1,5 @@
 // Page template. One template for every language; text lives in content/*.json.
-import { esc, md, attr, ext, initials, obfuscate } from './helpers.mjs';
+import { esc, md, attr, ext, initials, obfuscate, ICON_LINKS } from './helpers.mjs';
 
 export function renderPage({ c, site, lang, alt, asset, picture, styles }) {
     const url = site.domain + lang.path;
@@ -62,9 +62,7 @@ ${site.languages.map(l => `    <link rel="alternate" hreflang="${l.code}" href="
     <meta property="og:image:alt" content="${attr(c.meta.ogImageAlt)}">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+${ICON_LINKS}
 
     <link rel="preload" href="${asset(`fonts/montserrat-${lang.code === 'ru' ? 'cyrillic' : 'latin'}-400-normal.woff2`)}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="${asset('fonts/montserrat-latin-800-normal.woff2')}" as="font" type="font/woff2" crossorigin>

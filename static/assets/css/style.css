@@ -443,16 +443,18 @@ button { font: inherit; }
 .contacts li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, .14); align-items: center; }
 .contacts__label { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--dark-muted); }
 .contacts a { font-weight: 500; text-decoration: none; }
+.contacts a.chip-btn { font-weight: 600; }
 .section--dark a:hover { color: var(--dark-accent); }
 .email { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
 .email__addr { font-weight: 500; overflow-wrap: anywhere; }
 .email__actions { display: inline-flex; gap: 8px; }
 .email__actions[hidden] { display: none; }
 .chip-btn {
-    display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px;
+    display: inline-flex; align-items: center; justify-content: center; min-height: 32px; padding: 0 12px;
     border: 1px solid rgba(255, 255, 255, .24); border-radius: 999px;
     background: transparent; color: var(--dark-text);
-    font-size: .8rem; font-weight: 600; text-decoration: none; cursor: pointer;
+    font: 600 .8rem/1 var(--sans); text-decoration: none; white-space: nowrap; cursor: pointer;
+    -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent;
     transition: border-color .2s, color .2s;
 }
 .chip-btn:hover { border-color: var(--dark-accent); color: var(--dark-accent); }
@@ -628,7 +630,7 @@ a.work-link::after { content: " \2197"; }
     .card__link, .side-note__link, .footer__top, .quotes__actions .card__link { display: inline-block; padding-top: 10px; padding-bottom: 10px; }
     .job li a { display: inline-block; padding: 4px 0; }
     .featured__links .card__link, .foundation .card__link { padding: 10px 0; }
-    .contacts a { display: inline-block; padding: 8px 0; }
+    .contacts a:not(.chip-btn) { display: inline-block; padding: 8px 0; }
     .chip-btn { min-height: 40px; padding-left: 16px; padding-right: 16px; }
     .side-note { padding: 18px 20px; }
     .case-cta .card__link { margin: 4px 0 0; }

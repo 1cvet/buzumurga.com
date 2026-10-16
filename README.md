@@ -18,6 +18,7 @@ Static pages built from one template and two content files.
 | `build.mjs` | Build script, no dependencies: `node build.mjs` -> `dist/` |
 | `scripts/check.mjs` | Internal links, anchors, no em dashes; `--external` checks outside links |
 | `scripts/serve.mjs` | Local preview with production-like headers |
+| `scripts/icons.py` | Regenerates favicons, the iPhone icon and the web-manifest icons in `static/` from the MB mark (dev-only, Python) |
 | `scripts/og.mjs` | Regenerates `static/og-en.jpg` and `static/og-ru.jpg` (needs Playwright) |
 | `cv/Buzumurga_Mikhail.docx` | CV source (not published); export to `static/Buzumurga_Mikhail.pdf` |
 | `deploy/` | Nginx configs, server audit script, server setup guide (`deploy/SERVER.md`), xfluxdev.com move (`deploy/XFLUXDEV.md`) |

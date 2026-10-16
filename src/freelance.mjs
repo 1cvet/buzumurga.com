@@ -1,7 +1,7 @@
 // "Freelance web work" page: websites built alongside the corporate career (2017-2025).
 // One template for both languages; texts live in content/*.json under "freelance".
 // Covers live in static/assets/img/work/ (rendered by scripts/covers.mjs), screen recordings in static/assets/video/.
-import { esc, md, attr, ext } from './helpers.mjs';
+import { esc, md, attr, ext, ICON_LINKS, breadcrumbs } from './helpers.mjs';
 
 export function renderFreelance({ c, site, lang, alt, asset, findAsset, picture, styles }) {
     const f = c.freelance;
@@ -9,6 +9,20 @@ export function renderFreelance({ c, site, lang, alt, asset, findAsset, picture,
     const path = lang.path + 'freelance/';
     const altPath = alt.path + 'freelance/';
     const url = site.domain + path;
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'CollectionPage',
+                name: f.meta.title,
+                description: f.meta.description,
+                inLanguage: lang.code,
+                url,
+                author: { '@type': 'Person', name: c.hero.name, url: site.domain + '/' },
+            },
+            breadcrumbs([[c.hero.name, site.domain + home], [f.heading.replace(/\*/g, '').replace(/\.$/, ''), url]]),
+        ],
+    };
     const nav = [
         ['about', c.ui.nav.about],
         ['experience', c.ui.nav.experience],
@@ -81,11 +95,10 @@ ${site.languages.map(l => `    <link rel="alternate" hreflang="${l.code}" href="
     <meta property="og:image" content="${site.domain}${c.meta.ogImage}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="${attr(c.meta.ogImageAlt)}">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+${ICON_LINKS}
 
     <link rel="preload" href="${asset(`fonts/montserrat-${lang.code === 'ru' ? 'cyrillic' : 'latin'}-400-normal.woff2`)}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="${asset('fonts/montserrat-latin-800-normal.woff2')}" as="font" type="font/woff2" crossorigin>
@@ -93,6 +106,7 @@ ${site.languages.map(l => `    <link rel="alternate" hreflang="${l.code}" href="
     <script src="${asset('js/boot.js')}" data-metrika="${site.metrikaId}"></script>
     <script src="${asset('js/main.js')}" defer></script>
     <script src="${asset('js/freelance.js')}" defer></script>
+    <script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>
 </head>
 
 <body data-lang="${lang.code}">
